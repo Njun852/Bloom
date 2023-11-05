@@ -1,0 +1,152 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --accent: #4a8c4a;
+    --background: white;
+    --text: #86654b;
+    --textDark: #31241e;
+}
+body{
+    font-family: 'Montserrat', sans-serif;;
+    padding: 15px 25px 15px 25px;
+    background-color: var(--background);
+}
+
+header, header > *{
+    display: flex;
+}
+header{
+    height: 50px;
+    padding: 10px;
+}
+.title{
+    color: var(--text);
+    height: 100%
+}
+.title img{
+    margin-left: 15px;
+}
+img{
+    height: 100%;
+}
+.nav{
+    margin-left: auto;
+    margin-right: 10%;
+    font-weight: 700;
+    gap: 50px;
+}
+.nav > div{
+    display: flex;
+    line-height: 35px;
+}
+.nav img{
+    margin-right: 8px;
+}
+.four-circle{
+    width: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    scale: 0.7;
+}
+.four-circle > *{
+    flex-basis: 45%;
+    border-radius: 100%;
+    background-color: var(--accent);
+}
+hr{
+    margin-bottom: 15px;
+}
+.greetings-text{
+    color: var(--text);
+    margin-bottom: 35px;
+}
+main{
+    margin-left: 2%;
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 100% 40% 15%;
+    grid-gap: 35px;
+}
+.notif{
+    grid-column: span 2;
+    background-color: #c5daa9;
+    width: 80%;
+    border-radius: 15px;
+    overflow: hidden;
+    font-size: 1.3rem;
+}
+
+ul{
+    padding: 35px 25px 25px 80px;
+    font-size: 1.7rem;
+}
+li{
+    margin-bottom: 15px;
+}
+.due{
+    color: white;
+    padding: 15px;
+    display: flex;
+    background-color: #465a2b;
+
+}
+.due-date-txt{
+    margin-left: auto;
+    margin-right: 15px;
+}
+.due-txt{
+    margin-left: 15px;
+    margin-right: auto;
+}
+.lower-cards{
+    grid-column: span 2;
+    width: 80%;
+    display: flex;
+    gap: 35px;
+}
+.lower-cards > div{
+    background-color: #2C5A2B;
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+}
+.lower-nav{
+    grid-column: span 2;
+    width: 80%;
+    background-color: #C5DAA9;
+  
+}
+
+.main-wrapper{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+aside{
+    height: 150%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+aside > div{
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+aside div:nth-child(1){
+    background-color: #A6D8A5;
+}
+aside div:nth-child(2){
+    background-color: #5C9B5B;
+}
+aside div:nth-child(3){
+    background-color: #2C5A2B;
+}
+
