@@ -20,7 +20,7 @@ export default function Header(props){
                     <li onClick={()=>props.change('study')}
                         className={props.selected === 'study' ? 'selected' : ''}
                     >
-                        <i className="fa-solid fa-book-open"></i>Study
+                    <i className="fa-solid fa-book-open"></i>Study
                     </li>
                     <li onClick={()=>props.change('profile')}
                         className={props.selected === 'profile' ? 'selected' : ''}
