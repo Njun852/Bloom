@@ -1,7 +1,7 @@
 import React from "react"
 import TodoCard from "../components/TodoCard"
 import Slides from "../components/Slides"
-
+import "../assets/homepage.css"
 export default function Home(){
     return (
         <main className="homepage flex">

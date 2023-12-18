@@ -1,5 +1,5 @@
 import React from "react"
-
+import "../assets/header.css"
 export default function Header(props){
     return (
         <header className="flex">
