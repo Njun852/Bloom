@@ -1,26 +1,25 @@
-import React from "react"
-import Header from "./components/Header"
-import Home from "./pages/Home"
-import ToDo from "./pages/ToDo"
-import Study from "./pages/Study"
-import Profile from "./pages/Profile"
+import React from 'react'
+import Header from './components/header/Header'
+import TaskList from './components/TaskList/TaskList'
+import CallToAction from './components/callToAction/CallToAction'
+import Person1 from './assets/person1.png'
 export default function App(){
-    const [page, setPage] = React.useState('home')
 
-    function navigate(page){
-        setPage(page)
-    }
     return (
-        <div className="app">
-            <Header 
-                change={(page)=> navigate(page)}
-                selected={page}/>
-            <main className="app-main">
-            {page === 'home' && <Home/>}
-            {page === 'todo' && <ToDo/>}
-            {page === 'study' && <Study/>}
-            {page === 'profile' && <Profile/>}
-            </main>
+        <div>
+        <Header/>
+        <div className='page flex'>
+            <h1 className='greetings'>Goodmorning, User</h1>
+            <h2 className='task-today'>Your task today</h2>
+            <div className='idk-what-to-call-this'>
+                <TaskList>
+        
+                    <CallToAction/>
+                </TaskList>
+                <img src={Person1} alt='person 1' />
+            </div>
+ 
+        </div>
         </div>
     )
 }

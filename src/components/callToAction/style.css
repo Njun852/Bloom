@@ -1,0 +1,25 @@
+.call-to-action {
+    align-items: center;
+    gap: 8px;
+    width: 200px;
+    border-radius: 10px;
+    padding-left: 8px;
+
+    margin-top: auto;
+    margin-left: auto;
+    background-color: white;
+    cursor: pointer;
+}
+.call-to-action button {
+    cursor: pointer;
+    margin-left: auto;
+    background: var(--accent-gradient);
+    color: var(--light-text);
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    width: 60px;
+    border: none;
+    border-radius: 10px;
+}

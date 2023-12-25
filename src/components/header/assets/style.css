@@ -1,0 +1,44 @@
+header {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 100vw;
+    height: 45px;
+    padding: 0 15px;
+    align-items: center;
+    background-image: var(--primary-gradient);
+}
+header > img {
+    margin-right: 8px;
+    border-radius: 100%;
+    height: 90%;
+}
+nav {
+    margin-left: auto;
+}
+header nav ul {
+    list-style: none;
+    gap: 14px;
+}
+ul li img {
+    height: 100%;
+}
+header nav ul li {
+    gap: 8px;
+    align-items: center;
+    display: flex;
+    height: 45px;
+    padding: 8px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+header nav ul li:hover {
+    color: var(--light-text);
+    background: var(--accent-gradient);
+}
+.selected {
+    color: var(--light-text);
+    background-image: var(--accent-gradient);
+}
+.selected svg {
+    fill: var(--light-text);
+}

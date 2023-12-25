@@ -1,0 +1,51 @@
+:root {
+    --primary: #00CCFF;
+    --primary-gradient: linear-gradient(to bottom, #0CF 0, rgba(2, 99, 123, 0.79) 300%);
+    --accent-gradient: linear-gradient(162deg, #758B7B 12.15%, #3B4A3F 95.65%);
+    --light-text: #FFECEC;
+    --dark-text: #3B4A3F;
+}
+* {
+    user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+}
+
+.flex {
+    display: flex;
+}
+.page{
+    margin: 0 auto;
+    max-width: 800px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    padding-left:12px;
+    padding-right:12px;
+    width: 100vw;
+}
+
+.greetings {
+    transform: translateX(-50px);
+    font-size: 3rem;
+    margin-right: auto;
+    margin-bottom: 33px;
+}
+
+.task-today{
+    margin-bottom: 8px;
+    margin-right: auto;
+}
+.idk-what-to-call-this{
+    width: 100%;
+    position: relative;
+}
+.idk-what-to-call-this > img {
+    top: -60%;
+    z-index: -1;
+    height: 90%;
+    right: -10%;
+    position: absolute;
+}
