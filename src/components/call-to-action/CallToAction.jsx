@@ -6,7 +6,6 @@ export default function CallToAction(props){
     return (
         <div className='call-to-action flex'>
             {props.label}
-            Create new task
             <button className='flex'>
                 GO <img src={Arrow} alt="arrow" />
             </button>

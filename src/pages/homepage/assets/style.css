@@ -1,0 +1,61 @@
+.greetings {
+    transform: translateX(-50px);
+    font-size: 3rem;
+    margin-right: auto;
+    margin-bottom: 33px;
+}
+.task-today{
+    margin-bottom: 8px;
+    margin-right: auto;
+}
+.idk-what-to-call-this{
+    width: 100%;
+    position: relative;
+}
+.idk-what-to-call-this > img {
+    top: -60%;
+    z-index: -1;
+    height: 90%;
+    right: -10%;
+    position: absolute;
+}
+.lower-cards{
+    width: 100%;
+    gap: 34px;
+    margin-top: 34px;
+}
+.lower-cards > div {
+    overflow-x: hidden;
+    height: 250px;
+    color: #2B2B2B;
+}
+.lower-cards > .well-being-navigator-card {
+    border-radius: 8px;
+    padding: 20px 10px 10px 20px;
+    box-shadow: var(--drop-shadow);
+    background: var(--light-accent-gradient);
+    flex-direction: column;
+    width: 45%;
+}
+.lower-cards > .well-being-navigator-card > h2 {
+    margin-bottom: 20px;
+}
+.lower-cards > .well-being-navigator-card > p {
+    margin-bottom: auto;
+}
+.lower-cards > .tips-card {
+    flex-direction: column;
+    height: 250px;
+    width: 55%;
+    flex-grow: 1;
+}
+.lower-cards > .tips-card > h1{
+    flex-grow: 1;
+    background-color: transparent;
+}
+.lower-cards > .tips-card > p {
+    padding: 20px 25px;
+    border-radius: 8px;
+    flex-basis: 80%;
+    background: var(--light-accent-gradient);
+}

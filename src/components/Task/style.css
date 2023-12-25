@@ -7,6 +7,10 @@
     align-items: center;
     height: 60px;
     padding: 8px;
+    cursor: pointer;
+}
+.task:hover{
+    filter: brightness(0.8);
 }
 .task img{
     height: 100%;
@@ -28,8 +32,9 @@
 
 .checkbox{
     border: 3px var(--dark-text) solid;
-    height: 100%;
+    height: 80%;
     aspect-ratio: 1;
     margin-left: auto;
+    margin-right: 12px;
     border-radius: 50%;
 }
