@@ -1,34 +1,40 @@
 import React from 'react'
 import TaskList from '../../components/tasklist/TaskList'
 import CallToAction from '../../components/call-to-action/CallToAction'
-import Person1 from './assets/person1.png'
+import Clock from './assets/clock.png'
 import './assets/style.css'
+import Dog from './assets/dog.png'
 
 export default function Homepage(){
     return (
-        <main className='homepage'>
+        <div className='homepage flex'>
             <h1 className='greetings'>Goodmorning, User</h1>
             <h2 className='task-today'>Your task today</h2>
-            <div className='idk-what-to-call-this'>
-                <TaskList>        
-                    <CallToAction label='Create new task'/>
-                </TaskList>
-                <img src={Person1} alt='person 1' />
-            </div>
-            <div className='lower-cards flex'>
-                <div className='well-being-navigator-card flex'>
-                    <h2>How are you feeling today, User?</h2>
-                    <p>Tell us how you feel</p>
-                    <CallToAction label='Set mood'/>
+            <main className='flex'>
+                <div className='task-section flex'>
+                    <TaskList>        
+                        <CallToAction label='Create new task'/>
+                    </TaskList>
                 </div>
-                <div className='tips-card flex'>
+                <div className='lower-cards flex'>
+                    <div className='timer flex'>
+                        <img src={Clock} alt='clock' className='clock'/>
+                        <div>
+                            <h2>Pomodoro Timer</h2>
+                            <p>Start studying now</p>
+                        </div>
+                        <button>Start Timer</button>
+                    </div>
+                        <img src={Dog} alt='dog' className='dog'/>
                     <h1>Tips & Tricks</h1>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Laborum, maiores! In voluptatum autem excepturi sunt laboriosam nemo ut explicabo culpa?
-                    </p>
+                    <div className='tips-card flex'>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                                Laborum, maiores! In voluptatum autem excepturi sunt laboriosam nemo ut explicabo culpa?
+                            </p>
+                    </div>
                 </div>
-            </div>
         </main>
+        </div>
     )
 }

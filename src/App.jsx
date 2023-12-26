@@ -5,7 +5,7 @@ import Homepage from './pages/homepage/Homepage'
 export default function App(){
 
     return (
-        <div>
+        <div className='app flex'>
             <Header/>
             <div className='page flex'>
                 <Homepage/>

@@ -1,61 +1,82 @@
+.homepage {
+    flex-direction:  column;
+    height: 80%;
+    width: 100%;
+}
+.homepage > main {
+    gap: 40px;
+    height: 100%;
+}
+
+.homepage > main > .task-section {
+    flex-basis: 100%;
+    height: 100%;
+    flex-direction: column;
+}
 .greetings {
-    transform: translateX(-50px);
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-right: auto;
     margin-bottom: 33px;
 }
 .task-today{
+    font-size: 2rem;
     margin-bottom: 8px;
     margin-right: auto;
 }
-.idk-what-to-call-this{
-    width: 100%;
-    position: relative;
-}
-.idk-what-to-call-this > img {
-    top: -60%;
-    z-index: -1;
-    height: 90%;
-    right: -10%;
-    position: absolute;
-}
 .lower-cards{
-    width: 100%;
-    gap: 34px;
-    margin-top: 34px;
+    flex-basis: 30%;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
 }
 .lower-cards > div {
+    flex-grow: 1;
     overflow-x: hidden;
-    height: 250px;
     color: #2B2B2B;
 }
-.lower-cards > .well-being-navigator-card {
-    border-radius: 8px;
-    padding: 20px 10px 10px 20px;
+.lower-cards > .timer {
+    align-items: center;
     box-shadow: var(--drop-shadow);
-    background: var(--light-accent-gradient);
-    flex-direction: column;
-    width: 45%;
+    background-color: var(--accent);
+    border-radius: 8px;
+    flex-basis: 40%;
+    padding: 10px 12px 12px 15px;
 }
-.lower-cards > .well-being-navigator-card > h2 {
-    margin-bottom: 20px;
+.timer .clock {
+    height: 90%;
 }
-.lower-cards > .well-being-navigator-card > p {
-    margin-bottom: auto;
+.dog {
+    top: -150px;
+    right: 0;
+    z-index: -1;
+    position: absolute;
+    height: 60%;
+}
+.timer h2 {
+    margin-bottom: 12px;
+}
+.timer div {
+    margin-left: 5px;
+}
+.timer button {
+    margin-top: auto;
+    background-color: var(--secondary);
+    border: none;
+    font-weight: 600;
+    padding: 8px;
+    border-radius: 12px;
+    margin-left: auto;
+}
+.lower-cards h1 {
+    margin-top: 32px;
+    margin-bottom: 12px;
 }
 .lower-cards > .tips-card {
+    flex-grow: 1;
+    background-color: var(--accent);
     flex-direction: column;
-    height: 250px;
-    width: 55%;
-    flex-grow: 1;
-}
-.lower-cards > .tips-card > h1{
-    flex-grow: 1;
-    background-color: transparent;
-}
-.lower-cards > .tips-card > p {
+    box-shadow: var(--drop-shadow);
+    flex-basis: 60%;
     padding: 20px 25px;
     border-radius: 8px;
-    flex-basis: 80%;
-    background: var(--light-accent-gradient);
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './assets/style.css'
 
-import Logo from './assets/logo.jpg'
+import Logo from './assets/logo.png'
 import Home from './assets/home.png'
 import Task from './assets/task.png'
 import WellBeing from './assets/well-being.png'

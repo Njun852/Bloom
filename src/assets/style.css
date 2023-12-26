@@ -1,5 +1,7 @@
 :root {
-    --primary: #00CCFF;
+    --primary: #40EB84;
+    --secondary: #0095EF;
+    --accent: #9EAFA2;
     --primary-gradient: linear-gradient(to bottom, #0CF 0, rgba(2, 99, 123, 0.79) 300%);
     --accent-gradient: linear-gradient(162deg, #758B7B 12.15%, #3B4A3F 95.65%);
     --light-text: #FFECEC;
@@ -14,18 +16,26 @@
     padding: 0;
     font-family: Inter;
 }
+.app {
+    height: 100vh;
+    flex-direction: column;
+}
+.app > * {
 
+}
 .flex {
     display: flex;
 }
 .page{
+    height: 300px;
+    box-sizing: border-box;
+    flex-grow: 1;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 1100px;
+    padding-top: 50px;
+    padding-bottom: 100px;
     flex-direction: column;
     align-items: center;
-    padding: 100px 12px 40px 12px;
     width: 100vw;
 }
-.page > main {
-    width: 100%;
-}
+
