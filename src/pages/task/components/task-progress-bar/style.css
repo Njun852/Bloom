@@ -1,0 +1,22 @@
+.task-progress-bar {
+    margin-bottom: 12px;
+}
+.task-progress-bar > h3 {
+    color: var(--light-text);
+    margin-right: auto;
+    margin-bottom: 5px;
+}
+.task-progress-bar > div {
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #202020;
+}
+.task-progress-bar > div > div {
+    content: '';
+    background-color: var(--primary);
+    position: absolute;
+    border-radius: 20px;
+    height: 100%;
+}

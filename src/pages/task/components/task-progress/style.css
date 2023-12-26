@@ -1,0 +1,30 @@
+.task-progress {
+    width: 400px;
+}
+.task-progress > .progress-card {
+    flex-direction: column;
+    margin-top: 12px;
+    border-radius: 20px;
+    box-shadow: var(--drop-shadow);
+    height: 300px;
+    padding: 15px;
+    position: relative;
+    background-color: var(--secondary);
+}
+.task-progress > .progress-card > button {
+    width: 100px;
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    background-color: #00CCFF;
+    margin-top: auto;
+    margin-left: auto;
+}
+.progress-card > img {
+    position: absolute;
+    top: -35%;
+    z-index: -1;
+    height: 40%;
+    right: 0;
+}
