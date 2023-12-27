@@ -3,6 +3,7 @@ import Header from './components/header/Header'
 import Homepage from './pages/homepage/Homepage'
 import Taskpage from './pages/taskpage/Taskpage'
 import WellBeingPage from './pages/well-being-page/WellBeingPage'
+import SettingsPage from './pages/settingspage/SettingsPage'
 
 export default function App(){
     const [currentPage, setCurrentPage] = React.useState('homepage')
@@ -21,6 +22,9 @@ export default function App(){
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>
         break
+        case 'settingspage':
+        currentPageContent = <SettingsPage/>
+        break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
         break
@@ -30,6 +34,7 @@ export default function App(){
             <Header handleChange={setPage} currentPage={currentPage}/>
             <div className='page flex'>
                 {currentPageContent}
+                {/* <SettingsPage/> */}
             </div>
         </div>
     )

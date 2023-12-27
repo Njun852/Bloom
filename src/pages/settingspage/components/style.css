@@ -1,0 +1,22 @@
+.setting-option {
+    padding: 5px;
+    background-color: var(--primary);
+    align-items: center;
+    height: 60px;
+    color: var(--dark-text);
+    border-radius: 10px;
+    box-shadow: var(--drop-shadow);
+}
+.setting-option h2 {
+    font-size: 1.8rem;
+}
+
+.setting-option > .icon {
+    width: 50px;
+
+    margin-right: 12px;
+}
+.setting-option > .arrow {
+    margin-right: 12px;
+    margin-left: auto;
+}
