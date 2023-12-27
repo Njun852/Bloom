@@ -1,12 +1,13 @@
 .task-progress {
-    width: 400px;
+    width: 350px;
 }
+
 .task-progress > .progress-card {
     flex-direction: column;
-    margin-top: 12px;
+    margin-top: 5px;
     border-radius: 20px;
     box-shadow: var(--drop-shadow);
-    height: 300px;
+    height: 250px;
     padding: 15px;
     position: relative;
     background-color: var(--secondary);

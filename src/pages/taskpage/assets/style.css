@@ -1,0 +1,23 @@
+.taskpage {
+    gap: 32px;
+    margin-top: 12px;
+}
+.left-part {
+    gap: 32px;
+    flex-direction: column;
+    flex-basis: 30%;
+}
+.taskpage > .left-part > .tips-card {
+    box-shadow: var(--drop-shadow);
+    border-radius: 20px;
+    padding: 20px;
+    background-color: var(--accent);
+}
+.right-part{
+    gap: 32px;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.right-part > .task-list {
+    flex-grow: 1;
+}

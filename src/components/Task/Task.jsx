@@ -1,5 +1,4 @@
 import React from 'react'
-import Sun from './sun.png'
 import './style.css'
 export default function Task() {
     return (

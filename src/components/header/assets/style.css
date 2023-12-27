@@ -36,7 +36,7 @@ header nav ul li:hover {
 }
 .selected {
     color: var(--light-text);
-    background-color: var(--secondary);
+    background-color: var(--secondary) !important;
 }
 .selected svg {
     fill: var(--light-text);

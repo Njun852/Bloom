@@ -1,0 +1,23 @@
+.create-task {
+    width: 90%;
+    margin: 0 auto;
+    height: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+.create-task > * {
+    border: none;
+}
+.create-task input {
+    text-indent: 12px;
+    flex-grow: 1;
+}
+.create-task input:focus {
+    outline: none;
+}
+.create-task > button {
+    border-radius: 10px;
+    width: 150px;
+    font-size: 1.1rem;
+}
