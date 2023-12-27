@@ -1,0 +1,26 @@
+.mood-status {
+    width: 100%;
+    border-radius: 20px;
+    height: 200px;
+    box-shadow: var(--drop-shadow);
+    padding: 12px;
+    align-items: center;
+    margin-bottom: 32px;
+    background-color: rgba(244, 255, 123, 0.32);;
+}
+.mood-status > h1 {
+    flex-basis: 40%;
+    margin-left: 12px;
+}
+.mood-status > img {
+    height: 100%;
+}
+.mood-status > button {
+    font-weight: 600;
+    margin-top: auto;
+    margin-left: auto;
+    border: none;
+    padding: 4px 5px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}

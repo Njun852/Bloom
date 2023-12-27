@@ -1,0 +1,43 @@
+.mood-history {
+    flex-grow: 1;
+    gap: 12px;
+    flex-direction: column;
+}
+.mood-history > .top {
+    align-items: center;
+}
+.mood-history > .top button{
+    height: 40px;
+    border: none;
+    padding: 4px 5px;
+    border-radius: 10px;
+    margin-left: auto;
+    font-size: 1.1rem;
+}
+.mood-history > .top > button {
+    align-items: center;
+    gap: 8px;
+}
+.mood-history > .top > button > img {
+    height: 50%;
+}
+
+.mood-history > .calendar {
+    background-color: var(--primary);
+    width: 100%;
+    flex-grow: 1;
+}
+.calendar {
+    padding: 15px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.calendar > div {
+    border-radius: 50%;
+    background-color: #F4FF7B;
+    flex-basis: 25%;
+    scale: 0.7;
+    box-shadow: var(--drop-shadow);
+    aspect-ratio: 1;
+}

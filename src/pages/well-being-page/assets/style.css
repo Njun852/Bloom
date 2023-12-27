@@ -1,0 +1,29 @@
+.well-being-page{
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+}
+.well-being-page > .bottom-part {
+    flex-grow: 1;
+    gap: 24px;
+}
+.activities > div {
+    flex-grow: 1;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--accent);
+}
+.bottom-part > .activities {
+    flex-basis: 40%;
+    flex-direction: column;
+    gap: 24px;
+}
+.activities > .listen-music > h2 {
+    font-weight: 600;
+    width: 50%;
+}
+.activities > .meditate > h2{
+    margin:  0 auto;
+    font-size: 2rem;
+    transform: translateX(30px);
+}

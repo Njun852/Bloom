@@ -1,9 +1,8 @@
 import React from 'react'
 import Header from './components/header/Header'
 import Homepage from './pages/homepage/Homepage'
-import TaskProgressBar from './pages/taskpage/components/task-progress-bar/TaskProgressBar'
-import TaskProgress from './pages/taskpage/components/task-progress/TaskProgress'
 import Taskpage from './pages/taskpage/Taskpage'
+import WellBeingPage from './pages/well-being-page/WellBeingPage'
 
 export default function App(){
     const [currentPage, setCurrentPage] = React.useState('homepage')
@@ -11,7 +10,6 @@ export default function App(){
     function setPage(page) {
         setCurrentPage(page)
     }
-
     let currentPageContent
     switch(currentPage) {
         case 'homepage':
@@ -20,11 +18,13 @@ export default function App(){
         case 'taskpage':
         currentPageContent = <Taskpage/>
         break
+        case 'wellbeingpage':
+        currentPageContent = <WellBeingPage/>
+        break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
         break
     }
-
     return (
         <div className='app flex'>
             <Header handleChange={setPage} currentPage={currentPage}/>

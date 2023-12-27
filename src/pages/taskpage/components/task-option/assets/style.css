@@ -20,6 +20,7 @@
     border-radius: 10px;
 }
 .task-option button {
+    font-weight: 600;
     width: 150px;
     background-color: transparent;
     border-radius: 10px;
