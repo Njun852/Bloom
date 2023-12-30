@@ -5,7 +5,7 @@ import Clock from './assets/clock.png'
 import './assets/style.css'
 import Dog from './assets/dog.png'
 
-export default function Homepage(){
+export default function Homepage(props){
     return (
         <div className='homepage flex'>
             <h1 className='greetings'>Goodmorning, User</h1>
@@ -23,7 +23,7 @@ export default function Homepage(){
                             <h2>Pomodoro Timer</h2>
                             <p>Start studying now</p>
                         </div>
-                        <button>Start Timer</button>
+                        <button onClick={() => props.handleChange('timerpage')}>Start Timer</button>
                     </div>
                         <img src={Dog} alt='dog' className='dog'/>
                     <h1>Tips & Tricks</h1>

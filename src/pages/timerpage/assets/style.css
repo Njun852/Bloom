@@ -1,0 +1,7 @@
+.timer-page {
+    flex-grow: 1;
+    width: 80%;
+}
+.timer-page > .left-part{
+    flex-basis: 75%;
+}

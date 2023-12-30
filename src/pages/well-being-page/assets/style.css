@@ -8,6 +8,7 @@
     gap: 24px;
 }
 .activities > div {
+    box-shadow: var(--drop-shadow);
     flex-grow: 1;
     align-items: center;
     border-radius: 10px;
