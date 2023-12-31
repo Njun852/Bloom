@@ -4,4 +4,34 @@
 }
 .timer-page > .left-part{
     flex-basis: 75%;
+    flex-direction: column;
+}
+.timer-page > .left-part > button {
+    height: 40px;
+    width: 250px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: var(--primary);
+    margin: 0 auto;
+}
+.timer-page > .left-part > .when-start {
+    justify-content: center;
+    gap: 12px;
+}
+.timer-page > .left-part > .when-start > button {
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+}
+.timer-page > .left-part > .when-start :nth-child(1){
+    background-color: #646E66;
+}
+.timer-page > .left-part > .when-start :nth-child(2){
+    background-color: #D24242;
 }

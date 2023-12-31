@@ -1,44 +1,41 @@
 import React from 'react'
 import './assets/style.css'
 export default function Clock(props) {
-    const [time, setTime] = React.useState(props.time*1000)
-    const [isPause, setIsPause] = React.useState(true)
-    function changeState(){
-        setIsPause(prev => !prev)
-    }
-
-    const seconds = time/1000
-    const minute = seconds/60
+    const seconds = props.time/1000
+    
     React.useEffect(()=>{
         const progressCircle = document.querySelector('.clock > svg > .progress-circle')
         const maxOffset = 1258.1292724609375
-        const convertedToMilis = props.time*1000
-        const diff = convertedToMilis - (convertedToMilis - time)
-        const i = (convertedToMilis - time) * maxOffset/convertedToMilis
+        const convertedToMilis = 10*1000
+        const diff = convertedToMilis - (convertedToMilis - props.time)
+        const i = (convertedToMilis - props.time) * maxOffset/convertedToMilis
         let animation = progressCircle.animate({
             strokeDashoffset: [i, maxOffset]
         }, {duration: diff, fill:'forwards'})
-        if(isPause) {
+        if(props.isPause) {
             animation.cancel()
             return
         }
-        console.log(time/1000 );
         setTimeout(()=> {
-            if(time > 0)
-            setTime(prev => prev-100)
+            if(props.time > 0){
+                props.changeTime()
+                return
+            }else{
+                props.reset()
+            }
         }, 100)
         return function() {
             const offset = getComputedStyle(progressCircle).getPropertyValue('stroke-dashoffset')
-            progressCircle.style.strokeDashoffset = offset
+            progressCircle.style.strokeDashoffset =  props.start? 0: offset
             animation.cancel()
         }
-    }, [time, isPause])
+    }, [props.time, props.isPause])
     return (
-        <div className='clock flex' onClick={changeState}>
+        <div className='clock flex'>
             <svg width='100%' height='100%'>
-                <circle cx="50%" cy="50%" r="200" stroke="#9EAFA2" filter='url(#filter0_i_102_72)' 
-                strokeWidth="53" fill='transparent'/>
-                <circle cx="50%" cy="50%" r="200" strokeWidth="53"
+                <circle cx="50%" cy="50%" r="180" stroke="#9EAFA2" filter='url(#filter0_i_102_72)' 
+                strokeWidth="30" fill='transparent'/>
+                <circle cx="50%" cy="50%" r="180" strokeWidth="30"
                 stroke='url(#paint0_linear_102_73)' fill='transparent' className='progress-circle'/>
                 
                 <filter id="filter0_i_102_72" x="0" y="0" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -59,8 +56,12 @@ export default function Clock(props) {
                 <stop offset="1" stopColor="#007BC5"/>
                 </linearGradient>
             </svg>
-            <h1>{Math.floor((minute-minute%10)/10)}{Math.floor(minute%10)}
-            :{Math.floor((seconds%60-seconds%60%10))/10}{Math.floor(seconds%60%10)}</h1>
+            <h1>
+                {Math.floor(seconds/(60*10))}
+                {Math.floor(Math.ceil(seconds)/60)%10}:
+                {Math.floor(Math.ceil(seconds)%60/10)}
+                {Math.ceil(seconds%10)%10}
+            </h1>
         </div>
     )
 }

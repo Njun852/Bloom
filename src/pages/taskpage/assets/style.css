@@ -2,7 +2,7 @@
     gap: 32px;
     margin-top: 12px;
 }
-.left-part {
+.taskpage > .left-part {
     gap: 32px;
     flex-direction: column;
     flex-basis: 30%;
