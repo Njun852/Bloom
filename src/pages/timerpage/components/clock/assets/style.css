@@ -12,7 +12,7 @@
 .clock > svg > .progress-circle {
     stroke-linecap: round;
     animation: fill 20s forwards;
-    stroke-dasharray: 1258.1292724609375;
+    stroke-dasharray: 1258;
 }
 .clock h1{
     font-size: 4.5rem;

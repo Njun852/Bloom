@@ -3,33 +3,46 @@ import Clock from './components/clock/Clock'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const [isPause, setIsPause] = React.useState(true)
-    const [time, setTime] = React.useState(10*1000)
-    const [start, setStart] = React.useState(false)
+    const defaultTime = 30*60*1000
+    const [state, setState] = React.useState({time:defaultTime, playState:'stop'})
 
+    function stopTimer(){
+        setState({
+            time:defaultTime, playState:'stop'
+        })
+    }
     function startTimer(){
-        setTime(10*1000)
-        setIsPause(prev => !prev)
-        setStart(prev => !prev)
-        console.log('hi');
+        setState(prev => ({
+            ...prev, playState:'start'
+        }))
+    }
+    function pauseTimer(){
+        setState(prev => ({
+            ...prev, playState:'pause'
+        }))
+    }
+    function tickTime(){
+        setState(prev => ({
+            ...prev, time: prev.time-10
+        }))
     }
     return (
     <main className='timer-page flex'>
             <div className='left-part flex'>
-                <Clock  time={time}
-                        changeTime={()=>{setTime(prev => prev-100)}}
-                        isPause={isPause}
-                        start={start}
-                        reset={startTimer}/>
-                {!start && <button onClick={startTimer}>
-                Start
-                </button>}
-            {start &&
-                <div className='flex when-start'>
-                    <button>Pause</button>
-                    <button onClick={startTimer}>Stop</button>
-                </div> 
-            }
+                <Clock 
+                    defaultTime={defaultTime}
+                    time={state.time} 
+                    state={state.playState} 
+                    changeTime={tickTime}
+                />
+                {state.playState == 'stop' && <button onClick={startTimer}>Start</button>}
+                {state.time <= 0 ? <button onClick={stopTimer}>Done</button> :
+                state.playState != 'stop' &&
+                <div className='when-start flex'>
+                    {state.playState != 'pause' && <button onClick={pauseTimer}>Pause</button>}
+                    {state.playState == 'pause' && <button onClick={startTimer}>Continue</button>}
+                    <button onClick={stopTimer}>Stop</button>
+                </div>}
             </div>
             <div className='right-part'>
             </div>

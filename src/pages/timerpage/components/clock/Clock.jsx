@@ -2,34 +2,36 @@ import React from 'react'
 import './assets/style.css'
 export default function Clock(props) {
     const seconds = props.time/1000
-    
+
+    // const [animate, setAnimate] = React.useState(
+    //     progressCircle.animate({strokeDashoffset: [i, maxOffset]},
+    //     {duration: diff, fill:'forwards'}))
+
     React.useEffect(()=>{
         const progressCircle = document.querySelector('.clock > svg > .progress-circle')
-        const maxOffset = 1258.1292724609375
-        const convertedToMilis = 10*1000
-        const diff = convertedToMilis - (convertedToMilis - props.time)
-        const i = (convertedToMilis - props.time) * maxOffset/convertedToMilis
-        let animation = progressCircle.animate({
-            strokeDashoffset: [i, maxOffset]
-        }, {duration: diff, fill:'forwards'})
-        if(props.isPause) {
-            animation.cancel()
-            return
-        }
+        const maxOffset = 1258
+        const diff = props.defaultTime - (props.defaultTime - props.time)
+        const i = (props.defaultTime - props.time) * (maxOffset/props.defaultTime)
+        const animate = progressCircle.animate({strokeDashoffset: [i, i+(maxOffset/props.defaultTime)]},
+            {duration: maxOffset/props.defaultTime, fill:'forwards'})
+        
         setTimeout(()=> {
-            if(props.time > 0){
-                props.changeTime()
-                return
-            }else{
-                props.reset()
+            if(props.state == 'start'){
+                if(props.time > 0)
+                props.changeTime()       
             }
-        }, 100)
-        return function() {
-            const offset = getComputedStyle(progressCircle).getPropertyValue('stroke-dashoffset')
-            progressCircle.style.strokeDashoffset =  props.start? 0: offset
-            animation.cancel()
+        }, 10)
+        
+        if(props.state == 'pause'){
+            animate.pause()
+        }else if(props.state == 'stop'){
+            animate.cancel()
         }
-    }, [props.time, props.isPause])
+        console.log(Math.floor(Math.ceil(seconds)/60/10)%10)
+        return function() {
+            animate.cancel()
+        }
+    }, [props.time, props.state])
     return (
         <div className='clock flex'>
             <svg width='100%' height='100%'>
@@ -57,7 +59,7 @@ export default function Clock(props) {
                 </linearGradient>
             </svg>
             <h1>
-                {Math.floor(seconds/(60*10))}
+                {Math.floor(Math.ceil(seconds)/60/10)%10}
                 {Math.floor(Math.ceil(seconds)/60)%10}:
                 {Math.floor(Math.ceil(seconds)%60/10)}
                 {Math.ceil(seconds%10)%10}
