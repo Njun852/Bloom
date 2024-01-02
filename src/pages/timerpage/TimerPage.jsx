@@ -4,7 +4,7 @@ import PomodoroTask from './components/task-section/PomodoroTask'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const defaultTime = 60*1000
+    const defaultTime = 10*1000
     const [state, setState] = React.useState({time:defaultTime, playState:'stop'})
 
     function stopTimer(){

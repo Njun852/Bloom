@@ -4,28 +4,30 @@ export default function Clock(props) {
     const seconds = props.time/1000
 
     React.useEffect(()=>{
+        const desiredTime = 10
+        let prevTime = Date.now()
+    
         const progressCircle = document.querySelector('.clock > svg > .progress-circle')
-        const maxOffset = 1258
-        const diff = props.defaultTime - (props.defaultTime - props.time)
-        const i = (props.defaultTime - props.time) * (maxOffset/props.defaultTime)
-        const animate = progressCircle.animate({strokeDashoffset: [i, i+(maxOffset/props.defaultTime)]},
-            {duration: maxOffset/props.defaultTime, fill:'forwards'})
-        
-        setTimeout(()=> {
-            if(props.state == 'start'){
-                if(props.time > 0)
-                props.changeTime()       
+        const maxOffset = 1036.306640625
+        const incrementAmount = maxOffset/(props.defaultTime/10)
+        console.log(incrementAmount);
+        let animation
+        function animate(){
+            const timeNow = Date.now()
+            if(timeNow-prevTime >= desiredTime && props.time > 0 && props.state === 'start'){
+                const currentProgress = Number(getComputedStyle(progressCircle)
+                .getPropertyValue('stroke-dashoffset').replace('px', ''))
+                prevTime = timeNow
+                progressCircle.style.strokeDashoffset = `${currentProgress+incrementAmount}px`
+                console.log(getComputedStyle(progressCircle)
+                .getPropertyValue('stroke-dashoffset'))
+                props.changeTime()
             }
-        }, 10)
-        
-        if(props.state == 'pause'){
-            animate.pause()
-        }else if(props.state == 'stop'){
-            animate.cancel()
+            animation = requestAnimationFrame(animate)
         }
-        console.log(Math.floor(Math.ceil(seconds)/60/10)%10)
-        return function() {
-            animate.cancel()
+        animation = requestAnimationFrame(animate)
+        return ()=>{
+            cancelAnimationFrame(animation)
         }
     }, [props.time, props.state])
     return (
@@ -55,6 +57,7 @@ export default function Clock(props) {
                 </linearGradient>
             </svg>
             <h1>
+                {/* {seconds} */}
                 {Math.floor(Math.ceil(seconds)/60/10)%10}
                 {Math.floor(Math.ceil(seconds)/60)%10}:
                 {Math.floor(Math.ceil(seconds)%60/10)}
