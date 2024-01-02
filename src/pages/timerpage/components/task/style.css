@@ -1,0 +1,19 @@
+.pomodoro-task{
+    height: 50px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 12px 4px;
+    box-shadow: var(--drop-shadow);
+    background-color: #38C470;
+}
+.pomodoro-task > h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+.pomodoro-task > p {
+    margin-left: auto;
+}
+.current-task {
+    background-color: var(--primary);
+}

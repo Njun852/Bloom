@@ -37,8 +37,8 @@ export default function App(){
         <div className='app flex'>
             <Header handleChange={setPage} currentPage={currentPage}/>
             <div className='page flex'>
-                {/* {currentPageContent} */}
-                <TimerPage/>
+                {currentPageContent}
+                {/* <TimerPage/> */}
             </div>
         </div>
     )

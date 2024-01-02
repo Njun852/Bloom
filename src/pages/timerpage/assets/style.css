@@ -3,7 +3,7 @@
     width: 80%;
 }
 .timer-page > .left-part{
-    flex-basis: 75%;
+    flex-basis: 70%;
     flex-direction: column;
 }
 .timer-page > .left-part > button {
@@ -28,6 +28,13 @@
     font-size: 1.3rem;
     font-weight: 600;
     color: white;
+}
+.timer-page > .left-part > h1 {
+    margin: 0 auto;
+    font-size: 3rem
+}
+.timer-page > * {
+    /* outline: 1px solid */
 }
 .timer-page > .left-part > .when-start :nth-child(1){
     background-color: #646E66;

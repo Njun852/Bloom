@@ -1,9 +1,10 @@
 import React from 'react'
 import Clock from './components/clock/Clock'
+import PomodoroTask from './components/task-section/PomodoroTask'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const defaultTime = 30*60*1000
+    const defaultTime = 60*1000
     const [state, setState] = React.useState({time:defaultTime, playState:'stop'})
 
     function stopTimer(){
@@ -29,6 +30,7 @@ export default function TimerPage() {
     return (
     <main className='timer-page flex'>
             <div className='left-part flex'>
+                <h1>Pomodoro Timer</h1>
                 <Clock 
                     defaultTime={defaultTime}
                     time={state.time} 
@@ -45,6 +47,7 @@ export default function TimerPage() {
                 </div>}
             </div>
             <div className='right-part'>
+                <PomodoroTask/>
             </div>
         </main>
     )

@@ -3,10 +3,6 @@ import './assets/style.css'
 export default function Clock(props) {
     const seconds = props.time/1000
 
-    // const [animate, setAnimate] = React.useState(
-    //     progressCircle.animate({strokeDashoffset: [i, maxOffset]},
-    //     {duration: diff, fill:'forwards'}))
-
     React.useEffect(()=>{
         const progressCircle = document.querySelector('.clock > svg > .progress-circle')
         const maxOffset = 1258
@@ -35,9 +31,9 @@ export default function Clock(props) {
     return (
         <div className='clock flex'>
             <svg width='100%' height='100%'>
-                <circle cx="50%" cy="50%" r="180" stroke="#9EAFA2" filter='url(#filter0_i_102_72)' 
+                <circle cx="50%" cy="50%" r="165" stroke="#9EAFA2" filter='url(#filter0_i_102_72)' 
                 strokeWidth="30" fill='transparent'/>
-                <circle cx="50%" cy="50%" r="180" strokeWidth="30"
+                <circle cx="50%" cy="50%" r="165" strokeWidth="30"
                 stroke='url(#paint0_linear_102_73)' fill='transparent' className='progress-circle'/>
                 
                 <filter id="filter0_i_102_72" x="0" y="0" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
