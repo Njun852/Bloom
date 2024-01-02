@@ -1,9 +1,10 @@
 .timer-page {
     flex-grow: 1;
     width: 80%;
+    gap: 12px;
 }
 .timer-page > .left-part{
-    flex-basis: 70%;
+    flex-grow: 1;
     flex-direction: column;
 }
 .timer-page > .left-part > button {
@@ -41,4 +42,7 @@
 }
 .timer-page > .left-part > .when-start :nth-child(2){
     background-color: #D24242;
+}
+.timer-page > .right-part {
+    flex-basis: 30%;
 }

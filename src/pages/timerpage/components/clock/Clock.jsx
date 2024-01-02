@@ -10,7 +10,9 @@ export default function Clock(props) {
         const progressCircle = document.querySelector('.clock > svg > .progress-circle')
         const maxOffset = 1036.306640625
         const incrementAmount = maxOffset/(props.defaultTime/10)
-        console.log(incrementAmount);
+        if(props.state === 'stop'){
+            progressCircle.style.strokeDashoffset = '0px'
+        }
         let animation
         function animate(){
             const timeNow = Date.now()
