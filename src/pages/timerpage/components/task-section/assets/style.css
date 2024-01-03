@@ -44,3 +44,7 @@
     scale: 0.5;    
     outline: 1px;
 }
+.pomodoro-task-list > h2 {
+    margin: auto auto;
+    color: var(--light-text);
+}

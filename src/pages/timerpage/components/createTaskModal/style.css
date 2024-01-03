@@ -1,0 +1,80 @@
+.create-task-modal{
+    flex-direction: column;
+    height: 250px;
+    width: 450px;
+    gap: 12px;
+}
+.create-task-modal > h1 {
+    margin: 0 auto;
+}
+.create-task-modal > .modal-card {
+    background-color: var(--secondary);
+    padding: 18px 12px 10px 12px;
+    flex-grow: 1;
+    border-radius: 12px;
+    gap: 12px;
+    height: 100%;
+    flex-direction: column;
+}
+.create-task-modal > .modal-card > div {
+    display: flex;
+    height: 40px;;
+}
+.create-task-modal > .modal-card button {
+    border: none;
+}
+.create-task-modal > .modal-card > div > * {
+    border-radius: 8px;
+}
+.create-task-modal > .modal-card > div label {
+    color: white;
+    flex-basis: 40%;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+.create-task-modal > .modal-card > div> input {
+    flex-grow: 1;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-indent: 4px;
+}
+.create-task-modal > .modal-card > div > h1 {
+    background-color: white;
+    width: 45px;
+    text-align: center;
+}
+.create-task-modal > .modal-card > div > div {
+    width: 20px;
+    margin-left: 5px;
+    gap: 4px;
+    flex-direction: column;
+}
+
+.create-task-modal > .modal-card > div > div > button {
+    background-color: white;
+    flex-grow: 1;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.create-task-modal > .modal-card > .action {
+    margin-top: auto;
+    justify-content: space-around;
+}
+.create-task-modal > .modal-card > .action > button {
+    width: 150px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.create-task-modal > .modal-card > .action > button:nth-child(2){
+    background-color: var(--primary)
+}
+/* .backdrop {
+    position: absolute;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.1;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 1;
+} */

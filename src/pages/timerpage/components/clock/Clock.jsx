@@ -16,19 +16,17 @@ export default function Clock(props) {
         let animation
         function animate(){
             const timeNow = Date.now()
+            const currentProgress = (props.defaultTime-props.time)*incrementAmount/10
+            progressCircle.style.strokeDashoffset = `${currentProgress}px`
             if(timeNow-prevTime >= desiredTime && props.time > 0 && props.state === 'start'){
-                const currentProgress = Number(getComputedStyle(progressCircle)
-                .getPropertyValue('stroke-dashoffset').replace('px', ''))
-                prevTime = timeNow
-                progressCircle.style.strokeDashoffset = `${currentProgress+incrementAmount}px`
-                console.log(getComputedStyle(progressCircle)
-                .getPropertyValue('stroke-dashoffset'))
                 props.changeTime()
+                progressCircle.style.strokeDashoffset += `${incrementAmount}px`
+                prevTime = timeNow
             }
             animation = requestAnimationFrame(animate)
         }
         animation = requestAnimationFrame(animate)
-        return ()=>{
+        return ()=>{    
             cancelAnimationFrame(animation)
         }
     }, [props.time, props.state])
@@ -36,8 +34,8 @@ export default function Clock(props) {
         <div className='clock flex'>
             <svg width='100%' height='100%'>
                 <circle cx="50%" cy="50%" r="165" stroke="#9EAFA2" filter='url(#filter0_i_102_72)' 
-                strokeWidth="30" fill='transparent'/>
-                <circle cx="50%" cy="50%" r="165" strokeWidth="30"
+                strokeWidth="40" fill='transparent'/>
+                <circle cx="50%" cy="50%" r="165" strokeWidth="40"
                 stroke='url(#paint0_linear_102_73)' fill='transparent' className='progress-circle'/>
                 
                 <filter id="filter0_i_102_72" x="0" y="0" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">

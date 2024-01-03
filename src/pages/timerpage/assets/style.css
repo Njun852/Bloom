@@ -1,3 +1,8 @@
+.timer-page-container {
+    width: 100%;
+    flex-grow: 1;
+    justify-content: center;
+}
 .timer-page {
     flex-grow: 1;
     width: 80%;
@@ -34,9 +39,7 @@
     margin: 0 auto;
     font-size: 3rem
 }
-.timer-page > * {
-    /* outline: 1px solid */
-}
+
 .timer-page > .left-part > .when-start :nth-child(1){
     background-color: #646E66;
 }
@@ -44,5 +47,5 @@
     background-color: #D24242;
 }
 .timer-page > .right-part {
-    flex-basis: 30%;
+    flex-basis: 10%;
 }
