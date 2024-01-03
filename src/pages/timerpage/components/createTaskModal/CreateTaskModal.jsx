@@ -13,7 +13,8 @@ export default function CreateTaskModal(props) {
             id: nanoid(),
             max: formDetails.cycles,
             finished: 0,
-            taskName: formDetails.task
+            taskName: formDetails.task,
+            current: props.tasks.length <= 0
         }]))
         console.log('hi');
         props.navigate('home')

@@ -4,14 +4,13 @@ import Task from '../task/Task'
 import './assets/style.css'
 
 export default function PomodoroTask(props) {
-    console.log(props.tasks);
     const tasks = props.tasks.map((task, index) => 
         (<Task
             taskName={task.taskName}
             finished={task.finished}
             max={task.max}
             key={task.id}
-            current = {index === 0}
+            current={task.current}
         />))
     return (
         <div className='pomodoro-task-section flex'>
