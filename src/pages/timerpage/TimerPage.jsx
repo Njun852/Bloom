@@ -10,18 +10,14 @@ export default function TimerPage() {
     const [navigation, setNavigation] = React.useState('home')
     const [tasks, setTasks] = React.useState([])
     function finishCycle(){
-        const currentTask = tasks.find(task => task.current)
-        setTasks(current => current.map(task => ({...task, finished: 
-            task === currentTask ? task.finished+1 : task.finished})))
+        setTasks(current => current.map((task, index) => ({...task, finished: 
+            index === 0 ? task.finished+1 : task.finished})))
     }
     function removeTask(){
-        const currentTask = tasks.find(task => task.current)
-        if(currentTask.finished === currentTask.max){
+        if(tasks.length > 0 && tasks[0].finished === tasks[0].max){
             setTasks(current => {
-                console.log(current.length)    
                 if(current.length === 1) return []
-                const removedFinishedTask = current.filter(task => task != currentTask)
-                removedFinishedTask[0].current = true
+                const removedFinishedTask = current.filter((task, index) => index != 0)
                 return removedFinishedTask
             })
         }
@@ -34,10 +30,7 @@ export default function TimerPage() {
     }
     function updateState(newState){
         if(newState === 'start'){
-            if(tasks.length <= 0) {
-                console.log('No task found')
-                return
-            }
+            if(tasks.length <= 0) return
         }
         setState(prev => ({
             ...prev, playState: newState
@@ -73,7 +66,7 @@ export default function TimerPage() {
                     </div>}
                 </div>
                 <div className='right-part'>
-                    <PomodoroTask navigate={setNavigation} tasks={tasks}/>
+                    <PomodoroTask navigate={setNavigation} tasks={tasks} updateTask={setTasks}/>
                 </div>
             </main>}
     </main>            

@@ -2,8 +2,8 @@
     height: 50px;
     align-items: center;
     border-radius: 5px;
-    padding: 12px 4px;
-    box-shadow: var(--drop-shadow);
+    padding: 12px 8px;
+    box-shadow: var(--drop-shadow   );
     background-color: #38C470;
 }
 .pomodoro-task > h3 {
@@ -16,4 +16,15 @@
 }
 .current-task {
     background-color: var(--primary);
+}
+.pomodoro-task > button > svg {
+    fill: #D24242;
+    height: 100%;
+    width: 100%;
+}
+.pomodoro-task > button {
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    width: 20px;
 }

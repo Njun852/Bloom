@@ -9,14 +9,13 @@ export default function CreateTaskModal(props) {
         setFormDetails(current => ({...current, cycles: current.cycles+amount}))
     }
     function setDetails(){
+        if(formDetails.task.trim().length <= 0) return
         props.addTask(current => ([...current, {
             id: nanoid(),
             max: formDetails.cycles,
             finished: 0,
-            taskName: formDetails.task,
-            current: props.tasks.length <= 0
+            taskName: formDetails.task
         }]))
-        console.log('hi');
         props.navigate('home')
     }
     function updateTaskName(e){
