@@ -7,7 +7,7 @@ import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('homepage')
+    const [currentPage, setCurrentPage] = React.useState('timerpage')
     
     function setPage(page) {
         setCurrentPage(page)
@@ -37,8 +37,7 @@ export default function App(){
         <div className='app flex'>
             <Header handleChange={setPage} currentPage={currentPage}/>
             <div className='page flex'>
-                {/* {currentPageContent} */}
-                <TimerPage/>
+                {currentPageContent}
             </div>
         </div>
     )

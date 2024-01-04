@@ -14,24 +14,29 @@ export default function TimerPage() {
         setTasks(current => current.map(task => ({...task, finished: 
             task === currentTask ? task.finished+1 : task.finished})))
     }
-    function stopTimer(){
-        if(state.time <= 0 && tasks.length > 0){
-            finishCycle()
+    function removeTask(){
+        const currentTask = tasks.find(task => task.current)
+        if(currentTask.finished === currentTask.max){
+            setTasks(current => {
+                console.log(current.length)    
+                if(current.length === 1) return []
+                const removedFinishedTask = current.filter(task => task != currentTask)
+                removedFinishedTask[0].current = true
+                return removedFinishedTask
+            })
         }
+    }
+    function stopTimer(){
+        if(state.time <= 10) removeTask()
         setState({
             time:defaultTime, playState:'stop'
         })
     }
     function updateState(newState){
         if(newState === 'start'){
-            const currentTask = tasks.find(task => task.current)
-            if(currentTask.finished === currentTask.max){
-                setTasks(current => {
-                    if(current.length === 1) return []    
-                    const removedFinishedTask = current.filter(task => task != currentTask)
-                    removedFinishedTask[0].current = true
-                    return removedFinishedTask
-                })
+            if(tasks.length <= 0) {
+                console.log('No task found')
+                return
             }
         }
         setState(prev => ({
@@ -42,6 +47,9 @@ export default function TimerPage() {
         setState(prev => ({
             ...prev, time: prev.time-10
         }))
+        if(state.time <= 10 && tasks.length > 0){
+            finishCycle()
+        }
     }
     return (
     <main className='timer-page-container flex'>

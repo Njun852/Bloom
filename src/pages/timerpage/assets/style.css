@@ -9,7 +9,7 @@
     gap: 12px;
 }
 .timer-page > .left-part{
-    flex-grow: 1;
+    flex-basis: 70%;
     flex-direction: column;
 }
 .timer-page > .left-part > button {
@@ -47,5 +47,4 @@
     background-color: #D24242;
 }
 .timer-page > .right-part {
-    flex-basis: 10%;
 }
