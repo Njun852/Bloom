@@ -1,18 +1,12 @@
-.timer-page-container {
-    width: 100%;
-    flex-grow: 1;
-    justify-content: center;
-}
+
 .timer-page {
+    width: 40%;
     flex-grow: 1;
-    width: 80%;
+    flex-direction: column;
     gap: 12px;
 }
-.timer-page > .left-part{
-    flex-basis: 70%;
-    flex-direction: column;
-}
-.timer-page > .left-part > button {
+
+.timer-page > button {
     height: 40px;
     width: 250px;
     border: none;
@@ -22,11 +16,11 @@
     background-color: var(--primary);
     margin: 0 auto;
 }
-.timer-page > .left-part > .when-start {
+.timer-page > .when-start {
     justify-content: center;
     gap: 12px;
 }
-.timer-page > .left-part > .when-start > button {
+.timer-page > .when-start > button {
     height: 40px;
     width: 150px;
     border: none;
@@ -35,16 +29,13 @@
     font-weight: 600;
     color: white;
 }
-.timer-page > .left-part > h1 {
+.timer-page > h1 {
     margin: 0 auto;
     font-size: 3rem
 }
-
-.timer-page > .left-part > .when-start :nth-child(1){
+.timer-page > .when-start :nth-child(1){
     background-color: #646E66;
 }
-.timer-page > .left-part > .when-start :nth-child(2){
+.timer-page > .when-start :nth-child(2){
     background-color: #D24242;
-}
-.timer-page > .right-part {
 }

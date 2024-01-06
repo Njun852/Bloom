@@ -1,0 +1,21 @@
+.pomodoro-navbar{
+    width: 100%;
+    background-color: var(--accent);
+    height: 50px;
+    border-radius: 10px;
+}
+.pomodoro-navbar > ul {
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+}
+.pomodoro-navbar > ul > li {
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.8rem;
+    flex-grow: 1;
+    line-height: 50px;
+    text-align: center;
+}

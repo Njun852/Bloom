@@ -1,21 +1,72 @@
-.left-part > .clock {
+.timer-page > .clock{
+    width: 100%;
     flex-grow: 1;
+    flex-direction: column;
+}
+.time {
+    flex-grow: 1;
+    width: 100%;
+    flex-basis: 30%;
     position: relative;
     overflow: hidden;
     align-items: center;
     justify-content: center;
 }
 
-.clock > svg {
+.time > svg {
     transform: scaleX(-1);
     rotate: 90deg;
 }
-.clock > svg > .progress-circle {
+.time > svg > .progress-circle {
     stroke-linecap: round;
     animation: fill 20s forwards;
     stroke-dasharray:1036.306640625;
 }
-.clock h1{
-    font-size: 4.5rem;
+.time div{
     position: absolute;
+}
+.time div > * {
+    text-align: center;
+}
+.time div h1 {
+    color: var(--dark-text);
+}
+.time h1{
+    font-size: 4.5rem;
+}
+.time div h2 {
+    font-size: 1.9rem;
+}
+.timer-page > .clock > button {
+    height: 40px;
+    width: 250px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: var(--primary);
+    margin: 0 auto;
+}
+.timer-page > .clock > .when-start {
+    justify-content: center;
+    gap: 12px;
+}
+.timer-page > .clock > .when-start > button {
+    height: 40px;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+}
+.timer-page > .clock > h1 {
+    margin: 0 auto;
+    font-size: 3rem
+}
+.timer-page > .clock > .when-start :nth-child(1){
+    background-color: #646E66;
+}
+.timer-page > .clock > .when-start :nth-child(2){
+    background-color: #D24242;
 }

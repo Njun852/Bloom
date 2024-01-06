@@ -42,7 +42,7 @@
     flex-basis: 40%;
     padding: 10px 12px 12px 15px;
 }
-.timer .clock {
+.lower-cards > .timer .clock {
     height: 90%;
 }
 .dog {

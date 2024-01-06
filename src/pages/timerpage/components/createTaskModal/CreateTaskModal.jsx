@@ -16,7 +16,7 @@ export default function CreateTaskModal(props) {
             finished: 0,
             taskName: formDetails.task
         }]))
-        props.navigate('home')
+        props.navigate('tasks')
     }
     function updateTaskName(e){
         setFormDetails(current => ({
@@ -40,7 +40,7 @@ export default function CreateTaskModal(props) {
                     </div>
                 </div>
                 <div className='action'>
-                    <button onClick={() => props.navigate('home')}>Cancel</button>
+                    <button onClick={() => props.navigate('tasks')}>Cancel</button>
                     <button onClick={setDetails}>Okay</button>
                 </div>
             </div>

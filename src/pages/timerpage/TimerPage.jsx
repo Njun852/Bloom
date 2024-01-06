@@ -2,12 +2,13 @@ import React from 'react'
 import Clock from './components/clock/Clock'
 import PomodoroTask from './components/task-section/PomodoroTask'
 import CreateTaskModal from './components/createTaskModal/CreateTaskModal'
+import Navigation from './components/navigation/Navigation'
 import './assets/style.css'
 
 export default function TimerPage() {
     const defaultTime = 2*1000
     const [state, setState] = React.useState({time:defaultTime, playState:'stop'})
-    const [navigation, setNavigation] = React.useState('home')
+    const [navigation, setNavigation] = React.useState('timer')
     const [tasks, setTasks] = React.useState([])
     function finishCycle(){
         setTasks(current => current.map((task, index) => ({...task, finished: 
@@ -45,30 +46,23 @@ export default function TimerPage() {
         }
     }
     return (
-    <main className='timer-page-container flex'>
-        {navigation === 'createTask' ? <CreateTaskModal navigate={setNavigation} tasks={tasks}addTask={setTasks}/> :
         <main className='timer-page flex'>
-                <div className='left-part flex'>
-                    <h1>Pomodoro Timer</h1>
-                    <Clock 
-                        defaultTime={defaultTime}
-                        time={state.time} 
-                        state={state.playState} 
-                        changeTime={tickTime}
-                    />
-                    {state.playState == 'stop' && <button onClick={()=> updateState('start')}>Start</button>}
-                    {state.time <= 0 ? <button onClick={stopTimer}>Done</button> :
-                    state.playState != 'stop' &&
-                    <div className='when-start flex'>
-                        {state.playState != 'pause' && <button onClick={()=> updateState('pause')}>Pause</button>}
-                        {state.playState == 'pause' && <button onClick={()=> updateState('start')}>Continue</button>}
-                        <button onClick={stopTimer}>Stop</button>
-                    </div>}
-                </div>
-                <div className='right-part'>
-                    <PomodoroTask navigate={setNavigation} tasks={tasks} updateTask={setTasks}/>
-                </div>
-            </main>}
-    </main>            
+            {navigation === 'createTask' ? 
+                <CreateTaskModal navigate={setNavigation} 
+                tasks={tasks}addTask={setTasks}/> :
+            <Navigation navigate={setNavigation} current={navigation}/>}
+            {navigation === 'timer' &&
+            <Clock 
+                defaultTime={defaultTime}
+                time={state.time} 
+                state={state.playState} 
+                changeTime={tickTime}
+                stopTimer={stopTimer}
+                updateState={updateState}
+            />}
+            {navigation === 'tasks' &&
+                <PomodoroTask navigate={setNavigation} tasks={tasks} updateTask={setTasks}/>
+            }
+        </main>
     )
 }
