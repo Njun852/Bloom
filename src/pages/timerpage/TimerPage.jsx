@@ -6,7 +6,7 @@ import Navigation from './components/navigation/Navigation'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const [focusDuration, breakDuration] = [1*60*1000, 0.5*60*1000]
+    const [focusDuration, breakDuration] = [0.25*60*1000, 0.15*60*1000]
     const [state, setState] = React.useState({time:focusDuration, playState:'stop', session:'focus'})
     const defaultTime = state.session === 'focus' ? focusDuration : breakDuration
     const [navigation, setNavigation] = React.useState('timer')
@@ -47,8 +47,10 @@ export default function TimerPage() {
         setState(prev => ({
             ...prev, time: prev.time-10
         }))
-        if(state.time <= 10 && tasks.length > 0)
-        finishCycle()       
+        if(state.time <= 10 && tasks.length > 0){
+            if(state.session === 'focus')
+            finishCycle()       
+        }
     }
     return (
         <main className='timer-page flex'>
