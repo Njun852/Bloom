@@ -6,8 +6,9 @@ import Navigation from './components/navigation/Navigation'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const defaultTime = 2*1000
-    const [state, setState] = React.useState({time:defaultTime, playState:'stop'})
+    const [focusDuration, breakDuration] = [1*60*1000, 0.5*60*1000]
+    const [state, setState] = React.useState({time:focusDuration, playState:'stop', session:'focus'})
+    const defaultTime = state.session === 'focus' ? focusDuration : breakDuration
     const [navigation, setNavigation] = React.useState('timer')
     const [tasks, setTasks] = React.useState([])
     function finishCycle(){
@@ -23,14 +24,19 @@ export default function TimerPage() {
             })
         }
     }
+
     function stopTimer(){
         if(state.time <= 10) removeTask()
+            
+        const session = state.session === 'focus' ? 
+        {session: 'break', time: breakDuration} : 
+        {session: 'focus', time: focusDuration}
         setState({
-            time:defaultTime, playState:'stop'
+            time:session.time, playState:'stop', session: session.session
         })
     }
     function updateState(newState){
-        if(newState === 'start'){
+        if(newState === 'start' && state.session === 'focus'){
             if(tasks.length <= 0) return
         }
         setState(prev => ({
@@ -41,9 +47,8 @@ export default function TimerPage() {
         setState(prev => ({
             ...prev, time: prev.time-10
         }))
-        if(state.time <= 10 && tasks.length > 0){
-            finishCycle()
-        }
+        if(state.time <= 10 && tasks.length > 0)
+        finishCycle()       
     }
     return (
         <main className='timer-page flex'>
@@ -52,7 +57,8 @@ export default function TimerPage() {
                 tasks={tasks}addTask={setTasks}/> :
             <Navigation navigate={setNavigation} current={navigation}/>}
             {navigation === 'timer' &&
-            <Clock 
+            <Clock
+                session={state.session} 
                 defaultTime={defaultTime}
                 time={state.time} 
                 state={state.playState} 

@@ -58,7 +58,7 @@ export default function Clock(props) {
                     </linearGradient>
                 </svg>
                 <div>
-                <h2>Focus</h2>
+                <h2>{props.session.replace(props.session[0], props.session[0].toUpperCase())}</h2>
                 <h1>
                     {/* {seconds} */}
                     {Math.floor(Math.ceil(seconds)/60/10)%10}
