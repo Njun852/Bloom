@@ -6,7 +6,7 @@ import Navigation from './components/navigation/Navigation'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const [focusDuration, breakDuration] = [0.25*60*1000, 0.15*60*1000]
+    const [focusDuration, breakDuration] = [3*1000, 2*1000]
     const [state, setState] = React.useState({time:focusDuration, playState:'stop', session:'focus'})
     const defaultTime = state.session === 'focus' ? focusDuration : breakDuration
     const [navigation, setNavigation] = React.useState('timer')
@@ -27,18 +27,19 @@ export default function TimerPage() {
 
     function stopTimer(){
         if(state.time <= 10) removeTask()
-            
-        const session = state.session === 'focus' ? 
-        {session: 'break', time: breakDuration} : 
-        {session: 'focus', time: focusDuration}
+        
+        let session = {session: 'break', time: breakDuration}
+         
+        if(state.session === 'break' || tasks[0].finished === tasks[0].max) 
+        session = {session: 'focus', time: focusDuration}
         setState({
             time:session.time, playState:'stop', session: session.session
         })
     }
     function updateState(newState){
-        if(newState === 'start' && state.session === 'focus'){
-            if(tasks.length <= 0) return
-        }
+        if((newState === 'start' && state.session === 'focus') && tasks.length <= 0)
+            return
+
         setState(prev => ({
             ...prev, playState: newState
         }))
