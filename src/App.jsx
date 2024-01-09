@@ -7,7 +7,7 @@ import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('timerpage')
+    const [currentPage, setCurrentPage] = React.useState('taskpage')
     
     function setPage(page) {
         setCurrentPage(page)

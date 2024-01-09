@@ -1,22 +1,38 @@
-.create-task {
+.create-task{
+    flex-direction: column;
     width: 90%;
+    gap: 4px;
     margin: 0 auto;
+}
+.create-task > button {
+    align-items: center;
+    padding: 0 4px;
+    width: 65px;
+    height: 23px;
+    border-radius: 4px;
+}
+.create-task > button > img {
+    margin-left: auto;
+    height: 60%;
+}
+.create-task div{
+    width: 100%;
     height: 40px;
     border-radius: 8px;
     overflow: hidden;
     background-color: white;
 }
-.create-task > * {
+.create-task * {
     border: none;
 }
-.create-task input {
+.create-task div input {
     text-indent: 12px;
     flex-grow: 1;
 }
-.create-task input:focus {
+.create-task div input:focus {
     outline: none;
 }
-.create-task > button {
+.create-task div > button {
     border-radius: 8px;
     width: 150px;
     font-size: 1.1rem;

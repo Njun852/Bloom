@@ -68,7 +68,13 @@ export default function Clock(props) {
                 </h1>
                 </div>
             </div>
-            {props.state == 'stop' && <button onClick={()=> props.updateState('start')}>Start</button>}
+            {props.state == 'stop' && <button onClick={()=> {
+                if(props.amountOfTasks <= 0){
+                    props.navigate('tasks')
+                    return
+                }
+                props.updateState('start')
+            }}>Start</button>}
             {props.time <= 0 ? <button onClick={props.stopTimer}>Done</button> :
             props.state != 'stop' &&
             <div className='when-start flex'>

@@ -4,7 +4,6 @@ export default function Task() {
     return (
         <div className='task flex'>
             <div className='checkbox'>
-
             </div>
             <div className='task-details flex'>
                 <h3>Do Stuff</h3>

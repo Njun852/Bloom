@@ -9,9 +9,6 @@
     padding: 8px;
     cursor: pointer;
 }
-.task:hover{
-    filter: brightness(0.8);
-}
 .task img{
     height: 100%;
 }
@@ -31,6 +28,9 @@
     width: 10px;
     gap: 6px;
 }
+.kebab-menu:hover > div {
+    background-color: white;
+}
 .kebab-menu > div {
     border-radius: 3px;
     width: 7px;
@@ -42,12 +42,16 @@
     text-align: center;
     font-weight: 300;
     color: white;
-    border-radius: 10px;
+    width: 60px;
+    padding: 1px;
+    font-size: 0.9rem;
+    border-radius: 4px;
     background-color: #3B4A3F;
 }
 
 .checkbox{
-    border-radius: 8px;
+    margin: auto 0;
+    border-radius: 2px;
     border: 4px var(--dark-text) solid;
     height: 80%;
     aspect-ratio: 1;

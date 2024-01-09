@@ -7,7 +7,7 @@ import './assets/style.css'
 
 export default function Taskpage() {
 
-    return (
+return (
         <main className='taskpage flex'>
             <div className="left-part flex">
                 <TaskProgress/>

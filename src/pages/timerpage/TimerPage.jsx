@@ -19,17 +19,15 @@ export default function TimerPage() {
         if(tasks.length > 0 && tasks[0].finished === tasks[0].max){
             setTasks(current => {
                 if(current.length === 1) return []
-                const removedFinishedTask = current.filter((task, index) => index != 0)
+                const removedFinishedTask = current.filter(index => index != 0)
                 return removedFinishedTask
             })
         }
     }
-
     function stopTimer(){
         if(state.time <= 10) removeTask()
         
         let session = {session: 'break', time: breakDuration}
-         
         if(state.session === 'break' || tasks[0].finished === tasks[0].max) 
         session = {session: 'focus', time: focusDuration}
         setState({
@@ -61,6 +59,8 @@ export default function TimerPage() {
             <Navigation navigate={setNavigation} current={navigation}/>}
             {navigation === 'timer' &&
             <Clock
+                navigate={setNavigation}
+                amountOfTasks={tasks.length}
                 session={state.session} 
                 defaultTime={defaultTime}
                 time={state.time} 
