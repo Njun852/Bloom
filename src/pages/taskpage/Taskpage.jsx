@@ -6,8 +6,10 @@ import CreateTask from './components/create-task/CreateTask'
 import './assets/style.css'
 
 export default function Taskpage() {
+    const [tasks, setTask] = React.useState([])
+    const [completedTasks, setCompletedTasks] = React.useState([])
 
-return (
+    return (
         <main className='taskpage flex'>
             <div className="left-part flex">
                 <TaskProgress/>
@@ -20,8 +22,8 @@ return (
             </div>
             <div className='right-part flex'>
                 <TaskOption/>
-                <TaskList>
-                    <CreateTask/>
+                <TaskList tasks={tasks} completedTasks={completedTasks}>
+                    <CreateTask addTask={setTask}/>
                 </TaskList>
             </div>            
         </main>

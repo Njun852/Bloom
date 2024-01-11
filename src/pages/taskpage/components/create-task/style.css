@@ -2,7 +2,7 @@
     flex-direction: column;
     width: 90%;
     gap: 4px;
-    margin: 0 auto;
+    margin: auto auto 0 auto;
 }
 .create-task > button {
     align-items: center;

@@ -1,13 +1,13 @@
 import React from 'react'
 import './style.css'
-export default function Task() {
+export default function Task(props) {
     return (
         <div className='task flex'>
             <div className='checkbox'>
             </div>
             <div className='task-details flex'>
-                <h3>Do Stuff</h3>
-                <div className='label'>today</div>
+                <h3>{props.name}</h3>
+            <div className='label'>{props.label}</div>
             </div>
             <div className='kebab-menu flex'>
                 <div></div>

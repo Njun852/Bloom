@@ -4,7 +4,6 @@
     justify-content: space-between;
 }
 .task-option > button {
-    /* margin-left: auto; */
     align-items: center;
     gap: 8px;
     box-shadow: var(--drop-shadow);
@@ -25,6 +24,9 @@
     background-color: transparent;
     border-radius: 10px;
     border: none;
-    /* width: 150px; */
     font-size: 1.3rem;
+}
+.task-option button:hover{
+    color: white;
+    background-color: var(--secondary);
 }

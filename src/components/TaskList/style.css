@@ -9,5 +9,22 @@
 }
 .task-list-container {
     margin-top: 12px;
+}
+.task-list-container > h1 {
+    margin-top: 25%;
+    color: var(--dark-text);
+    text-align: center;
+}
+.task-list > .completed{
+    outline: 1px solid;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
     margin-bottom: auto;
+}
+.task-list > .completed > span {
+    background-color: var(--primary);
+    position: absolute;
+    padding: 0 4px;
 }

@@ -6,13 +6,14 @@ import './assets/style.css'
 import Dog from './assets/dog.png'
 
 export default function Homepage(props){
+    const [tasks, setTask] = React.useState([])
     return (
         <div className='homepage flex'>
             <h1 className='greetings'>Goodmorning, User</h1>
             <h2 className='task-today'>Your task today</h2>
             <main className='flex'>
                 <div className='task-section flex'>
-                    <TaskList>        
+                    <TaskList tasks={tasks}>        
                         <CallToAction label='Create new task'/>
                     </TaskList>
                 </div>
