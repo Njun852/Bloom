@@ -7,6 +7,12 @@ import Dog from './assets/dog.png'
 
 export default function Homepage(props){
     const [tasks, setTask] = React.useState([])
+
+    React.useEffect(()=>{
+        fetch('http://localhost:5000/tasks')
+        .then(respose => respose.json())
+        .then(data => console.log(data.data.tasks))
+    }, [])
     return (
         <div className='homepage flex'>
             <h1 className='greetings'>Goodmorning, User</h1>
