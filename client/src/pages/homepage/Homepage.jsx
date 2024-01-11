@@ -6,20 +6,14 @@ import './assets/style.css'
 import Dog from './assets/dog.png'
 
 export default function Homepage(props){
-    const [tasks, setTask] = React.useState([])
-
-    React.useEffect(()=>{
-        fetch('http://localhost:5000/tasks')
-        .then(respose => respose.json())
-        .then(data => console.log(data.data.tasks))
-    }, [])
+    
     return (
         <div className='homepage flex'>
             <h1 className='greetings'>Goodmorning, User</h1>
             <h2 className='task-today'>Your task today</h2>
             <main className='flex'>
                 <div className='task-section flex'>
-                    <TaskList tasks={tasks}>        
+                    <TaskList tasks={props.tasks}>        
                         <CallToAction label='Create new task'/>
                     </TaskList>
                 </div>

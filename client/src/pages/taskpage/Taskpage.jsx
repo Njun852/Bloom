@@ -5,10 +5,9 @@ import TaskList from '../../components/tasklist/TaskList'
 import CreateTask from './components/create-task/CreateTask'
 import './assets/style.css'
 
-export default function Taskpage() {
-    const [tasks, setTask] = React.useState([])
+export default function Taskpage(props) {
     const [completedTasks, setCompletedTasks] = React.useState([])
-
+    
     return (
         <main className='taskpage flex'>
             <div className="left-part flex">
@@ -22,8 +21,8 @@ export default function Taskpage() {
             </div>
             <div className='right-part flex'>
                 <TaskOption/>
-                <TaskList tasks={tasks} completedTasks={completedTasks}>
-                    <CreateTask addTask={setTask}/>
+                <TaskList tasks={props.tasks} completedTasks={completedTasks}>
+                    <CreateTask addTask={props.addTask}/>
                 </TaskList>
             </div>            
         </main>

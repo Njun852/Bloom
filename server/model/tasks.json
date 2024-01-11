@@ -1,4 +1,17 @@
-{
-    "user": "Njun",
-    "tasks": [1, 2, 3]
-}
+[
+  {
+    "name": "Eat breakfast",
+    "label": "today",
+    "id": "kk0jDBR-usiuYdurcnu_s"
+  },
+  {
+    "name": "Sleep",
+    "label": "today",
+    "id": "2P0EYksXGjDaMvpDbwCqN"
+  },
+  {
+    "name": "Do homework",
+    "label": "today",
+    "id": "XSTEwqLxXkpcQpyk2jEHe"
+  }
+]

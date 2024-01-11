@@ -8,15 +8,16 @@ export default function CreateTask(props) {
     function changeName(e){
         setTask(prev => ({...prev, name: e.target.value}))
     }
+    function addTask(){
+        props.addTask({...task, id: nanoid()})
+        setTask(prev => ({...prev, name: ''}))
+    }
     return (
         <div className='create-task flex'>
             <button className='flex'>Today<img src={Pencil} alt='pencil'/></button>
             <div className='flex'>
                 <input type='text' value={task.name} onChange={changeName} name='new-task' placeholder='e.g. Do homework'/>
-                <button className='selected' onClick={() => {
-                    props.addTask(current => [...current, {...task, id: nanoid()}])
-                    setTask(prev => ({...prev, name: ''}))
-                }}>Create Task</button>
+                <button className='selected' onClick={addTask}>Create Task</button>
             </div>
         </div>
     )
