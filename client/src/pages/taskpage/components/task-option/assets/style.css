@@ -3,14 +3,35 @@
     height: 50px;
     justify-content: space-between;
 }
-.task-option > button {
+.task-option > div > button {
     align-items: center;
     gap: 8px;
-    box-shadow: var(--drop-shadow);
+    height: 50px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
     justify-content: center;
 }
-.task-option > button > img {
+
+.task-option > div {
+    gap: 4px;
+    flex-direction: column;
+    box-shadow: var(--drop-shadow);
+    height: 50px;
+    overflow: hidden;
+    transition: height 0.3s;
+    background-color: #D9D9D9;
+    z-index: 1;
+    border-radius: 10px;
+}
+.task-option > div[data-expand='true'] {
+    height: calc(200% + 4px);
+}
+.task-option > div[data-expand='true'] button.selected > img {
+    rotate: 180deg;
+}
+.task-option > div > button > img {
     height: 30%;
+    transition: rotate 0.3s;
 }
 .task-option > nav {
     box-shadow: var(--drop-shadow);
