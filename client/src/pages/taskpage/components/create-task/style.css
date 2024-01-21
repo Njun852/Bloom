@@ -18,11 +18,12 @@
     position: absolute;
     flex-direction: column;
     bottom: 0;
-    gap: 4px;
+    gap: 2px;
     background: white;
     overflow: hidden;
     padding: 0;
     height: 23px;
+    transition: height 0.3s;
     flex-shrink: 0;
     transform: scaleY(-1);
     border-radius: 4px;
@@ -30,9 +31,9 @@
 .selected-label * {
     flex-shrink: 0;
 }
-.create-task .wrapper > .selected-label:hover {
+/* .create-task .wrapper > .selected-label:hover {
     height: auto;
-}
+} */
 .create-task .wrapper > .selected-label > button:hover{
     color: white;
     background: var(--secondary);
@@ -48,10 +49,12 @@
     border-radius: 4px;
     background: white;
 }
-
 .create-task .selected-label > button > img {
     margin-left: auto;
     height: 15px;
+    scale: 0.6;
+    transition: rotate 0.3s;
+    /* rotate: -90deg; */
 }
 .create-task > :nth-child(2){
     width: 100%;
