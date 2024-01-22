@@ -8,7 +8,7 @@
 }
 .create-task > .wrapper {
     flex-basis: 50%;
-    width: 75px;
+    width: 85px;
     margin-top: auto;
     scale: 1 -1 1;
     position: relative;
@@ -20,8 +20,8 @@
     margin-bottom: auto;
     flex-direction: column;
     gap: 2px;
-    background: white;
     overflow: hidden;
+    background: white;
     padding: 0;
     height: 23px;
     transition: height 0.3s;
@@ -41,16 +41,18 @@
 .create-task > .wrapper > .selected-label >  button {
     align-items: center;
     transform: scaleY(-1);
-    padding: 0 4px;
     height: 23px;
     margin: 0;
-    gap: 4px;
     justify-content: center;
     border-radius: 4px;
     background: white;
 }
+.create-task > .wrapper > .selected-label > button > p {
+    text-overflow: ellipsis !important;
+    overflow: hidden;
+    max-width: 55px;
+}
 .create-task .selected-label > button > img {
-    margin-left: auto;
     height: 15px;
     scale: 0.6;
     transition: rotate 0.3s;

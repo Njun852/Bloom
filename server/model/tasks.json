@@ -1,17 +1,22 @@
 [
   {
+    "name": "Practice Dance",
+    "label": "School",
+    "id": "_EzgWgWYD5QX6SNlrpO5A"
+  },
+  {
     "name": "Eat breakfast",
-    "label": "today",
-    "id": "kk0jDBR-usiuYdurcnu_s"
+    "label": "Important",
+    "id": "V5ZsJ7ru9ub0DKOYknq3k"
   },
   {
     "name": "Sleep",
-    "label": "today",
-    "id": "khOxD9H6em0LKtQFHAtZu"
+    "label": "Important",
+    "id": "8r5xQTLevf45qNXOROvvt"
   },
   {
-    "name": "Do laundry",
-    "label": "today",
-    "id": "p1kq5Ogd33UJfNnJRgBPn"
+    "name": "Study Math",
+    "label": "School",
+    "id": "rGFD2MKfUhzGiZdufVIhe"
   }
 ]

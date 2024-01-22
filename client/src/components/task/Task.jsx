@@ -7,7 +7,9 @@ export default function Task(props) {
             </div>
             <div className='task-details flex'>
                 <h3>{props.name}</h3>
-            <div className='label'>{props.label}</div>
+            <div className='label'>
+                <p>{props.label}</p>
+            </div>
             </div>
             <div className='kebab-menu flex'>
                 <div></div>
