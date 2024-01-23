@@ -3,7 +3,11 @@ import './style.css'
 import Task from '../task/Task'
 
 export default function TaskList(props) {
-    const taskElements = props.tasks.map(task => (
+    const taskElements = props.tasks.filter(task => {
+        return (props.currentPage == 'tasks' 
+        || task.label.toLowerCase() == props.currentPage)
+    })
+    .map(task => (
     <Task key={task.id} id={task.id}
         name={task.name} label={task.label}/>))
     return (

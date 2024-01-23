@@ -7,7 +7,7 @@ import './assets/style.css'
 
 export default function Taskpage(props) {
     const [completedTasks, setCompletedTasks] = React.useState([])
-    
+    const [taskLabelPage, setTaskLabelPage] = React.useState('tasks')
     return (
         <main className='taskpage flex'>
             <div className="left-part flex">
@@ -20,8 +20,9 @@ export default function Taskpage(props) {
                 </div>
             </div>
             <div className='right-part flex'>
-                <TaskOption/>
-                <TaskList tasks={props.tasks} completedTasks={completedTasks}>
+                <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage}/>
+                <TaskList tasks={props.tasks} completedTasks={completedTasks} 
+                currentPage={taskLabelPage}>
                     <CreateTask addTask={props.addTask}/>
                 </TaskList>
             </div>            
