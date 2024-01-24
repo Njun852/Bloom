@@ -33,7 +33,7 @@ export default function App(){
         currentPageContent = <Homepage handleChange={setPage} tasks={tasks}/>
         break
         case 'taskpage':
-        currentPageContent = <Taskpage tasks={tasks} addTask={addTask}/>
+        currentPageContent = <Taskpage tasks={tasks} addTask={addTask} setTasks={setTasks}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>

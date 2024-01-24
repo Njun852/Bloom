@@ -53,9 +53,27 @@
 }
 .checkbox{
     margin: auto 0;
-    border-radius: 2px;
+    border-radius: 100%;
     border: 4px var(--dark-text) solid;
-    height: 80%;
+    height: 100%;
+    overflow: hidden;
     aspect-ratio: 1;
     margin-right: 12px;
+}
+.checkbox > svg{
+    scale: 0.8;
+    display: none;
+    transform: translateY(1px);
+    height: 100%;
+    aspect-ratio: 1;
+}
+.finished .checkbox{
+    background: var(--primary);
+}
+.finished .checkbox > svg {
+    display: block;
+}
+.finished > .task-details h3, .finished > .task-details p{
+    text-decoration: line-through;
+    opacity: 0.8;
 }
