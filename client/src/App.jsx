@@ -13,27 +13,19 @@ export default function App(){
     function setPage(page) {
         setCurrentPage(page)
     }
-    function addTask(task){
-        fetch('http://localhost:5000/tasks', {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({...task})
-        })
-        setTasks(current => [...current, task])
-    }
+    
     React.useEffect(()=>{
         fetch('http://localhost:5000/tasks')
         .then(respose => respose.json())
         .then(({data}) => setTasks([...data]))
     }, [])
-
     let currentPageContent
     switch(currentPage) {
         case 'homepage':
         currentPageContent = <Homepage handleChange={setPage} tasks={tasks}/>
         break
         case 'taskpage':
-        currentPageContent = <Taskpage tasks={tasks} addTask={addTask} setTasks={setTasks}/>
+        currentPageContent = <Taskpage tasks={tasks} setTasks={setTasks}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>

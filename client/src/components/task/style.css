@@ -1,4 +1,5 @@
 .task{
+    user-select: none;
     margin-bottom: 12px;
     /* box-shadow: var(--drop-shadow); */
     border-radius: 10px;

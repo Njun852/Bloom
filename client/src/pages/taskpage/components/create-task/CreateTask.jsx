@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid'
 
 export default function CreateTask(props) {
     const [labels, setLabels] = React.useState(['Today', 'Important', 'School'])
-    const [task, setTask] = React.useState({name: '', label: labels[0]})
+    const [task, setTask] = React.useState({name: '', label: labels[0], finished: false})
     
     const labelElements = labels.map((label, index) => {
         return (
@@ -23,6 +23,9 @@ export default function CreateTask(props) {
         setTask(prev => ({...prev, name: e.target.value}))
     }
     function addTask(){
+        if(['today', 'important'].includes(labels[0].toLocaleLowerCase())){
+            props.setTaskLabelPage(labels[0].toLowerCase())
+        }
         props.addTask({...task, label: labels[0], id: nanoid()})
         setTask(prev => ({...prev, name: ''}))
     }

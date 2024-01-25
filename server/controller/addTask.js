@@ -1,6 +1,5 @@
 const {writeFile, readFile} = require('fs').promises
 function addTask(req, res){
-    // console.log(req.body)
     const path = './model/tasks.json'
     readFile(path, 'utf-8')
     .then(tasks => {

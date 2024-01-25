@@ -6,15 +6,24 @@ import CreateTask from './components/create-task/CreateTask'
 import './assets/style.css'
 
 export default function Taskpage(props) {
-    const [completedTasks, setCompletedTasks] = React.useState([])
     const [taskLabelPage, setTaskLabelPage] = React.useState('tasks')
 
     function finishTask(id){
         const task = props.tasks.find(task => task.id == id)
         if(!task) return
-        setCompletedTasks(current => [...current, task])
-        props.setTasks(current =>  current.filter(current => current.id != id))
+        props.setTasks(current =>  current.map(current => current.id == id ? 
+            {...current, finished: !current.finished} : current))
     }
+    function addTask(task){
+        props.setTasks(current => [...current, task])
+    }
+    React.useEffect(()=> {
+        fetch('http://localhost:5000/tasks', {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify([...props.tasks])
+        })
+    }, [props.tasks])
     return (
         <main className='taskpage flex'>
             <div className="left-part flex">
@@ -28,9 +37,8 @@ export default function Taskpage(props) {
             </div>
             <div className='right-part flex'>
                 <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage}/>
-                <TaskList tasks={props.tasks} completedTasks={completedTasks} 
-                currentPage={taskLabelPage} finishTask={finishTask}>
-                    <CreateTask addTask={props.addTask}/>
+                <TaskList tasks={props.tasks} currentPage={taskLabelPage} finishTask={finishTask}>
+                    <CreateTask addTask={addTask} setTaskLabelPage={setTaskLabelPage}/>
                 </TaskList>
             </div>            
         </main>
