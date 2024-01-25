@@ -1,6 +1,19 @@
 import React from 'react'
 import './style.css'
 export default function Task(props) {
+    function toggle(e) {
+        e.stopPropagation()
+        const btn = document.querySelector('.kebab-menu.flex')
+        const isShown = e.currentTarget != window
+        btn.children[3].style.transform = isShown ? 'scaleY(1)' : 'scaleY(0)'
+        btn.dataset.visible = isShown == 'false'
+    }
+    React.useEffect(()=> {
+        window.addEventListener('click', toggle)
+        return () => {
+            window.removeEventListener('click', toggle)
+        }
+    }, [])
     return (
         <div className={`task flex ${props.isComplete ? 'finished' : ''}`}>
             <div className='checkbox' onClick={()=>props.finishTask(props.id)}>
@@ -17,10 +30,15 @@ export default function Task(props) {
                 <p>{props.label}</p>
             </div>
             </div>
-            <div className='kebab-menu flex'>
+            <div className='kebab-menu flex' onClick={toggle}>
                 <div></div>
                 <div></div>
                 <div></div>
+                <div className='options flex'>
+                    <button>Rename Task</button>
+                    <button>Change Label</button>
+                    <button>Delete</button>
+                </div>
             </div>
         </div>
     )

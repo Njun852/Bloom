@@ -9,8 +9,9 @@
 }
 .task-list-container {
     margin-top: 12px;
-    height: 400px;
+    flex-grow: 1;
     flex-direction: column;
+    overflow-x: hidden;
     overflow-y: auto;
     padding: 4px;
 }
@@ -19,7 +20,7 @@
 }
 .task-list-container::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
+}
 .task-list-container::-webkit-scrollbar-thumb {
     background: var(--dark-text);
 }
@@ -27,9 +28,8 @@
     background: #555;
 }
 .task-list-container > h1 {
-    margin: auto;
     color: var(--dark-text);
-    text-align: center;
+    margin: auto;
 }
 .task-list > .task-list-container > .completed{
     outline: 1px solid;

@@ -70,7 +70,11 @@ export default function TimerPage() {
                 updateState={updateState}
             />}
             {navigation === 'tasks' &&
-                <PomodoroTask navigate={setNavigation} tasks={tasks} updateTask={setTasks}/>
+                <PomodoroTask navigate={setNavigation} stop={() => {
+                    setState({
+                        time:focusDuration, playState:'stop', session: 'focus'
+                    })
+                }} tasks={tasks} updateTask={setTasks}/>
             }
         </main>
     )

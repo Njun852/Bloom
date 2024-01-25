@@ -1,7 +1,7 @@
 .task{
+    position: relative;
     user-select: none;
     margin-bottom: 12px;
-    /* box-shadow: var(--drop-shadow); */
     border-radius: 10px;
     background-color: var(--secondary);
     width: 100%;
@@ -28,6 +28,30 @@
     margin-left: auto;
     width: 10px;
     gap: 6px;
+}
+.kebab-menu > .options {
+    top: 0;
+    flex-direction: column;
+    right: 10px;
+    width: 100px;
+    transform-origin: center top;
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    /* height: 0; */
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--drop-shadow);
+    position: absolute;
+    background: white;
+}
+.kebab-menu > .options > button {
+    height: 40px;
+    border: none;
+    background: white;
+}
+.kebab-menu > .options > button:hover {
+    background: var(--secondary);
+    color: white;
 }
 .kebab-menu:hover > div {
     background-color: white;

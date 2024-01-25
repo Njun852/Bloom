@@ -15,6 +15,7 @@ export default function PomodoroTask(props) {
             current={index === 0}
             isEditing={isEditing}
             editTask={props.updateTask}
+            stop={props.stop}
         />))
     return (
         <div className='pomodoro-task-section flex'>

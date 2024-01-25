@@ -11,9 +11,9 @@ export default function(props){
                 return removedCurrent
             }
             const removedTask = current.filter(task => task.id != props.id)
-            console.log(removedTask)
             return removedTask
         })
+        props.stop()
     }
     return (
         <div className={`pomodoro-task flex ${props.current ? 'current-task' : ''}`}>
