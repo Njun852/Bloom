@@ -7,15 +7,18 @@ export default function TaskList(props) {
         return (props.currentPage == 'tasks' 
         || task.label.toLowerCase() == props.currentPage)
     })
-    const taskElements = tasks.filter(task => !task.finished)
-    .map(task => (
-    <Task key={task.id} id={task.id}
-        name={task.name} label={task.label} finishTask={props.finishTask}/>))
-    const completedTaskElements = tasks.filter(task => task.finished).map(task =>(
-        <Task key={task.id} id={task.id}
-        finishTask={props.finishTask}
-        name={task.name} label={task.label} isComplete={true}/>
-    ))
+    const taskElements = []
+    const completedTaskElements = []
+    for(let task of tasks){
+        const taskElement = <Task id={task.id} key={task.id} name={task.name} label={task.label}
+        finishTask={props.finishTask} setModal={props.setModal} updateTask={props.updateTask} 
+        finished={task.finished} removeTask={props.removeTask}/>
+        if(task.finished){
+            completedTaskElements.push(taskElement)
+            continue
+        }
+        taskElements.push(taskElement)
+    }
     return (
         <div className='task-list flex'>            
             <div className='task-list-container flex'>

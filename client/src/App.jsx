@@ -9,11 +9,20 @@ import TimerPage from './pages/timerpage/TimerPage'
 export default function App(){
     const [currentPage, setCurrentPage] = React.useState('taskpage')
     const [tasks, setTasks] = React.useState([])
-
+    const [modal, setModal] = React.useState()
     function setPage(page) {
         setCurrentPage(page)
     }
-    
+    function finishTask(id){
+        setTasks(current =>  current.map(current => current.id == id ? 
+            {...current, finished: !current.finished} : current))
+    }
+    function updateTask(id, property, value){
+        setTasks(current => current.map(current => current.id == id ? {...current, [property]: value} : current))
+    }
+    function removeTask(id){
+        setTasks(current => current.filter(task => task.id !=id))
+    }
     React.useEffect(()=>{
         fetch('http://localhost:5000/tasks')
         .then(respose => respose.json())
@@ -22,10 +31,14 @@ export default function App(){
     let currentPageContent
     switch(currentPage) {
         case 'homepage':
-        currentPageContent = <Homepage handleChange={setPage} tasks={tasks}/>
+        currentPageContent = <Homepage  finishTask={finishTask} handleChange={setPage} 
+        navigate={() => setCurrentPage('taskpage')} setModal={setModal} 
+        tasks={tasks} removeTask={removeTask}/>
         break
         case 'taskpage':
-        currentPageContent = <Taskpage tasks={tasks} setTasks={setTasks}/>
+        currentPageContent = <Taskpage tasks={tasks} 
+        setModal={setModal} finishTask={finishTask}
+        setTasks={setTasks} updateTask={updateTask} removeTask={removeTask}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>
@@ -46,6 +59,10 @@ export default function App(){
             <div className='page flex'>
                 {currentPageContent}
             </div>
+
+            {modal && <div className='modals'>
+                {modal}
+            </div>}
         </div>
     )
 }

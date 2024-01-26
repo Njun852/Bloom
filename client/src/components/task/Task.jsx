@@ -1,5 +1,7 @@
 import React from 'react'
+import ChangeNameModal from '../change-name-modal/ChangeNameModal'
 import './style.css'
+
 export default function Task(props) {
     function toggle(e) {
         e.stopPropagation()
@@ -15,7 +17,7 @@ export default function Task(props) {
         }
     }, [])
     return (
-        <div className={`task flex ${props.isComplete ? 'finished' : ''}`}>
+        <div className={`task flex ${props.finished ? 'finished' : ''}`}>
             <div className='checkbox' onClick={()=>props.finishTask(props.id)}>
             <svg xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 
@@ -35,9 +37,11 @@ export default function Task(props) {
                 <div></div>
                 <div></div>
                 <div className='options flex'>
-                    <button>Rename Task</button>
+                    <button onClick={() => props.setModal(<ChangeNameModal hideModal={() =>props.setModal()} 
+                    rename={(newName) => props.updateTask(props.id, 'name', newName)}/>)}
+                    >Rename Task</button>
                     <button>Change Label</button>
-                    <button>Delete</button>
+                    <button onClick={() => props.removeTask(props.id)}>Delete</button>
                 </div>
             </div>
         </div>

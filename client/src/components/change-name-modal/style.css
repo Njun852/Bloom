@@ -1,0 +1,52 @@
+.change-name-modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.change-name-modal > h2 {
+    color: white;
+}
+.change-name-modal > div {
+    border-radius: 4px;
+    background: var(--secondary);
+    flex-grow: 1;
+    width: 100%;
+    gap: 6px;
+    padding: 12px;
+    justify-content: center;
+    flex-direction: column;
+}
+.change-name-modal > div > input {
+    flex-basis: 50%;
+    font-size: 1.3rem;
+    text-indent: 4px;
+    border-radius: 4px;
+}
+.change-name-modal > div > div {
+    flex-basis: 40%;
+    gap: 8px;
+    margin-top: auto;
+}
+.change-name-modal * {
+    border: none;
+}
+.change-name-modal > div > div > button {
+    height: 100%;
+    flex-grow: 1;
+    font-weight: 600;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 4px;
+}
+.change-name-modal > div > div > button:nth-of-type(1) {
+    background: var(--bad);
+}
+.change-name-modal > div > div > button:nth-of-type(2) {
+    background: var(--primary);
+}

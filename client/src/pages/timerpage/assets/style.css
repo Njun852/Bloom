@@ -37,5 +37,5 @@
     background-color: #646E66;
 }
 .timer-page > .when-start :nth-child(2){
-    background-color: #D24242;
+    background-color: var(--bad);
 }

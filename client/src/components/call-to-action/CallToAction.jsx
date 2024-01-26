@@ -6,7 +6,7 @@ export default function CallToAction(props){
     return (
         <div className='call-to-action flex'>
             {props.label}
-            <button className='flex'>
+            <button className='flex' onClick={props.navigate}>
                 GO <img src={Arrow} alt="arrow" />
             </button>
         </div>
