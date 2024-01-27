@@ -1,12 +1,12 @@
 [
   {
-    "name": "Eat lunch",
+    "name": "Rest",
     "label": {
-      "name": "Today",
-      "priority": 2,
-      "id": "dsfsdfwef"
+      "name": "Important",
+      "priority": 1,
+      "id": "fehfdnse"
     },
-    "finished": false,
-    "id": "kcR1m1QUQkdERvaVYW6wf"
+    "finished": true,
+    "id": "iDbhRZWKD3NtlUTTXeoRB"
   }
 ]

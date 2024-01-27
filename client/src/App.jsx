@@ -6,9 +6,10 @@ import WellBeingPage from './pages/well-being-page/WellBeingPage'
 import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
 import ChangeLabelModal from './components/change-label-modal/ChangeLabelModal'
+import LabelPage from './pages/labelpage/LabelPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('taskpage')
+    const [currentPage, setCurrentPage] = React.useState('homepage')
     const [tasks, setTasks] = React.useState([])
     const [modal, setModal] = React.useState()
     function setPage(page) {
@@ -28,7 +29,7 @@ export default function App(){
         break
         case 'taskpage':
         currentPageContent = <Taskpage tasks={tasks} 
-        setModal={setModal} setTasks={setTasks}/>
+        setModal={setModal} setTasks={setTasks} moveToLabelPage={()=>setCurrentPage('labelpage')}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>
@@ -38,6 +39,9 @@ export default function App(){
         break
         case 'timerpage':
         currentPageContent = <TimerPage/> 
+        break
+        case 'labelpage':
+        currentPageContent = <LabelPage moveToTaskPage={() => setCurrentPage('taskpage')}/>
         break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
@@ -52,7 +56,6 @@ export default function App(){
 
             {modal && <div className='modals'>
                 {modal}
-                {/* <ChangeLabelModal/> */}
             </div>}
         </div>
     )

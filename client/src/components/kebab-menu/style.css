@@ -1,0 +1,41 @@
+.kebab-menu {
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    width: 40px;
+    gap: 6px;
+    position: relative;
+}
+.kebab-menu > div {
+    width: 7px;
+    aspect-ratio:  1;
+    flex-grow: 1;
+    background-color: black;
+}
+.kebab-menu > .options {
+    top: 0;
+    flex-direction: column;
+    right: 10px;
+    width: 100px;
+    transform-origin: center top;
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    z-index: 2;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--drop-shadow);
+    position: absolute;
+    background: white;
+}
+.kebab-menu > .options > button {
+    height: 40px;
+    border: none;
+    background: white;
+}
+.kebab-menu > .options > button:hover {
+    background: var(--secondary);
+    color: white;
+}
+.kebab-menu:hover > div {
+    background-color: white;
+}

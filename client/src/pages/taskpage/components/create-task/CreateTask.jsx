@@ -16,7 +16,7 @@ export default function CreateTask(props) {
             <button 
                 className={index == 0 ? 'flex selected' : 'flex'}
                 onClick={index == 0 ? toggle : changeLabel}
-                key={index}
+                key={index} data-id={label.id}
             >
                 <p>{label.name}</p>
                 {index == 0 && <img src={Arrow} alt='arrow'/>}
@@ -27,18 +27,17 @@ export default function CreateTask(props) {
         setTask(prev => ({...prev, name: e.target.value}))
     }
     function addTask(){
-        if(['today', 'important'].includes(labels[0].name.toLocaleLowerCase())){
+        if(['today', 'important'].includes(labels[0].name.toLowerCase())){
             props.setTaskLabelPage(labels[0].name.toLowerCase())
         }
         props.addTask({...task, label: labels[0], id: nanoid()})
         setTask(prev => ({...prev, name: ''}))
     }
     function changeLabel(e) {
-        const label = e.currentTarget.textContent
+        const label = labels.find(label => label.id == e.currentTarget.dataset.id)
         
         setLabels(current => {
-            console.log(current)
-            const newOrder = current.filter(current => current != label)
+            const newOrder = current.filter(current => current.id != label.id)
             newOrder.unshift(label)
             return newOrder
         })
@@ -62,10 +61,7 @@ export default function CreateTask(props) {
         <div className='create-task flex'>
             <div className='wrapper flex'>
                 <div className='selected-label flex' data-open='false'>
-                    {/* <button className='flex selected' onClick={toggle}>Today<img src={Arrow} alt='arrow'/></button>
-                    <button className='flex'>Important</button>
-                    <button className='flex'>School</button> */}
-                    {labelElements}
+                   {labelElements}
                 </div>
             </div>
             <div className='flex'>
