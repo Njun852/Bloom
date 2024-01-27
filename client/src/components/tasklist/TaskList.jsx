@@ -3,16 +3,22 @@ import './style.css'
 import Task from '../task/Task'
 
 export default function TaskList(props) {
-    const tasks = props.tasks.filter(task => {
+    const filteredTasks = props.tasks.filter(task => {
         return (props.currentPage == 'tasks' 
-        || task.label.toLowerCase() == props.currentPage)
+        || task.label.name.toLowerCase() == props.currentPage)
     })
+    function updateTask(id, property, value){
+        props.setTasks(current => current.map(current => current.id == id ? {...current, [property]: value} : current))
+    }
+    function removeTask(id){
+        props.setTasks(current => current.filter(task => task.id !=id))
+    }
     const taskElements = []
     const completedTaskElements = []
-    for(let task of tasks){
-        const taskElement = <Task id={task.id} key={task.id} name={task.name} label={task.label}
-        finishTask={props.finishTask} setModal={props.setModal} updateTask={props.updateTask} 
-        finished={task.finished} removeTask={props.removeTask}/>
+    for(let task of filteredTasks){
+        const taskElement = <Task task={task} key={task.id}
+        setModal={props.setModal} updateTask={updateTask} 
+        finished={task.finished} removeTask={removeTask}/>
         if(task.finished){
             completedTaskElements.push(taskElement)
             continue

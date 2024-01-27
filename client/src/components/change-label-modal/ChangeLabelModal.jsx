@@ -3,13 +3,25 @@ import DropDown from '../drop-down/DropDown'
 import Label from './Label'
 import './assets/style.css'
 
-export default function ChangeLabelModal(){
+export default function ChangeLabelModal(props){
+    const [labels, setLabels] = React.useState([
+        {name: 'Today', priority: 2, id: 'dsfsdfwef'},
+        {name: 'Important', priority: 1, id: 'vkdjfdsk'},
+        {name: 'School', priority: 3, id: 'dkfekfje'}
+    ])
+
+    const [selected, setSelected] = React.useState(labels[0])
+
+    const labelElements = labels.map(label => (
+        <Label selected={label.id==selected.id} 
+        label={label} key={label.id} change={() => setSelected(label)}/>
+    ))
     return (
         <div className='change-label-modal modal flex'>
             <h1>Choose a Label</h1>
             <div className='flex'>
                 <div className='options flex'>
-                    <input type="text" />
+                    <input type="text" placeholder='Search for a label'/>
                     <DropDown/>
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_198_6)">
@@ -23,12 +35,14 @@ export default function ChangeLabelModal(){
                     </svg>
                 </div>
                 <div className='labels flex'>
-                    <Label selected={false}/>
-                    <Label selected={false}/>
+                    {labelElements}
                 </div>
                 <div className='actions flex'>
-                    <button className='cancel-btn'>Cancel</button>
-                    <button>Confirm</button>
+                    <button className='cancel-btn' onClick={props.hideModal}>Cancel</button>
+                    <button onClick={() => {
+                        props.change(selected)
+                        props.hideModal()
+                    }}>Confirm</button>
                 </div>
             </div>
         </div>

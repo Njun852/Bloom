@@ -32,8 +32,7 @@ export default function Taskpage(props) {
             <div className='right-part flex'>
                 <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage}/>
                 <TaskList tasks={props.tasks} currentPage={taskLabelPage} 
-                finishTask={props.finishTask} setModal={props.setModal} 
-                updateTask={props.updateTask} removeTask={props.removeTask}>
+                setTasks={props.setTasks} setModal={props.setModal}>
                     <CreateTask addTask={addTask} setTaskLabelPage={setTaskLabelPage}/>
                 </TaskList>
             </div>            

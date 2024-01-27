@@ -51,6 +51,9 @@
 }
 .change-label-modal > div > .labels {
     gap: 8px;
+    padding: 4px;
+    overflow: auto;
+    height: 200px;
     flex-direction: column;
 }
 .change-label-modal > div > .actions {

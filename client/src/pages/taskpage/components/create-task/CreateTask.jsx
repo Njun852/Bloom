@@ -4,7 +4,11 @@ import Arrow from './arrow.png'
 import { nanoid } from 'nanoid'
 
 export default function CreateTask(props) {
-    const [labels, setLabels] = React.useState(['Today', 'Important', 'School'])
+    const [labels, setLabels] = React.useState([
+        {name: 'Today', priority: 2, id: 'aldfjeifsjk'}, 
+        {name: 'Important', priority: 1, id: 'fehfdnse'}, 
+        {name: 'School', priority: 3, id: 'kejfsekjfe'}
+    ])
     const [task, setTask] = React.useState({name: '', label: labels[0], finished: false})
     
     const labelElements = labels.map((label, index) => {
@@ -14,7 +18,7 @@ export default function CreateTask(props) {
                 onClick={index == 0 ? toggle : changeLabel}
                 key={index}
             >
-                <p>{label}</p>
+                <p>{label.name}</p>
                 {index == 0 && <img src={Arrow} alt='arrow'/>}
             </button>
         )
@@ -23,8 +27,8 @@ export default function CreateTask(props) {
         setTask(prev => ({...prev, name: e.target.value}))
     }
     function addTask(){
-        if(['today', 'important'].includes(labels[0].toLocaleLowerCase())){
-            props.setTaskLabelPage(labels[0].toLowerCase())
+        if(['today', 'important'].includes(labels[0].name.toLocaleLowerCase())){
+            props.setTaskLabelPage(labels[0].name.toLowerCase())
         }
         props.addTask({...task, label: labels[0], id: nanoid()})
         setTask(prev => ({...prev, name: ''}))

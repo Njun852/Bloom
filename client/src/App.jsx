@@ -14,16 +14,6 @@ export default function App(){
     function setPage(page) {
         setCurrentPage(page)
     }
-    function finishTask(id){
-        setTasks(current =>  current.map(current => current.id == id ? 
-            {...current, finished: !current.finished} : current))
-    }
-    function updateTask(id, property, value){
-        setTasks(current => current.map(current => current.id == id ? {...current, [property]: value} : current))
-    }
-    function removeTask(id){
-        setTasks(current => current.filter(task => task.id !=id))
-    }
     React.useEffect(()=>{
         fetch('http://localhost:5000/tasks')
         .then(respose => respose.json())
@@ -32,14 +22,13 @@ export default function App(){
     let currentPageContent
     switch(currentPage) {
         case 'homepage':
-        currentPageContent = <Homepage  finishTask={finishTask} handleChange={setPage} 
-        navigate={() => setCurrentPage('taskpage')} setModal={setModal} 
-        tasks={tasks} removeTask={removeTask}/>
+        currentPageContent = <Homepage handleChange={setPage} 
+        navigate={() => setCurrentPage('taskpage')} 
+        setModal={setModal} tasks={tasks} setTasks={setTasks}/>
         break
         case 'taskpage':
         currentPageContent = <Taskpage tasks={tasks} 
-        setModal={setModal} finishTask={finishTask}
-        setTasks={setTasks} updateTask={updateTask} removeTask={removeTask}/>
+        setModal={setModal} setTasks={setTasks}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>
@@ -61,9 +50,9 @@ export default function App(){
                 {currentPageContent}
             </div>
 
-            {modal || true && <div className='modals'>
-                {/* {modal} */}
-                <ChangeLabelModal/>
+            {modal && <div className='modals'>
+                {modal}
+                {/* <ChangeLabelModal/> */}
             </div>}
         </div>
     )
