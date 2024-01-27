@@ -1,5 +1,6 @@
 import React from 'react'
 import ChangeNameModal from '../change-name-modal/ChangeNameModal'
+import ConfirmDeleteModal from '../confirm-delete-modal/ConfirmDeleteModal'
 import './style.css'
 
 export default function Task(props) {
@@ -41,7 +42,9 @@ export default function Task(props) {
                     rename={(newName) => props.updateTask(props.id, 'name', newName)}/>)}
                     >Rename Task</button>
                     <button>Change Label</button>
-                    <button onClick={() => props.removeTask(props.id)}>Delete</button>
+                    <button onClick={() => props.setModal(<ConfirmDeleteModal 
+                    delete={() => props.removeTask(props.id)} hideModal={() =>props.setModal()}/>)}
+                    >Delete</button>
                 </div>
             </div>
         </div>

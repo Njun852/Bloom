@@ -5,6 +5,7 @@ import Taskpage from './pages/taskpage/Taskpage'
 import WellBeingPage from './pages/well-being-page/WellBeingPage'
 import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
+import ChangeLabelModal from './components/change-label-modal/ChangeLabelModal'
 
 export default function App(){
     const [currentPage, setCurrentPage] = React.useState('taskpage')
@@ -60,8 +61,9 @@ export default function App(){
                 {currentPageContent}
             </div>
 
-            {modal && <div className='modals'>
-                {modal}
+            {modal || true && <div className='modals'>
+                {/* {modal} */}
+                <ChangeLabelModal/>
             </div>}
         </div>
     )

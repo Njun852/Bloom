@@ -1,0 +1,71 @@
+.change-label-modal {
+    flex-direction: column;
+    height: 400px;
+    width: 400px;
+    gap: 14px;
+    align-items: center;
+}
+.change-label-modal > h1 {
+    font-size: 2.5rem;
+}
+.change-label-modal > div {
+    flex-grow: 1;
+    gap: 24px;
+    flex-direction: column;
+    padding: 28px 32px 14px 32px;
+    width: 100%;
+    border-radius: 8px;
+    background: var(--primary);
+}
+.change-label-modal > div > .options {
+    height: 40px;
+    width: 100%;
+    gap: 12px;
+    position: relative;
+}
+.change-label-modal > div > .options > input {
+    flex-basis: 70%;
+    border: none;
+    font-size: 1.1rem;
+    text-indent: 34px;
+    border-radius: 4px;
+}
+.change-label-modal > div > .options > input:focus{
+    outline: none;
+}
+.change-label-modal > div > .options > .drop-down {
+    flex-grow: 1;
+    background: white;
+    border-radius: 4px;
+}
+.change-label-modal > div > .options > .drop-down > button > span {
+    font-size: 1rem;
+    font-weight: normal;
+}
+.change-label-modal > div > .options > svg {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 4px;
+    opacity: 0.4;
+}
+.change-label-modal > div > .labels {
+    gap: 8px;
+    flex-direction: column;
+}
+.change-label-modal > div > .actions {
+    width: 100%;
+    margin-top: auto;
+    gap: 10px;
+    flex-basis: 12%;
+}
+.change-label-modal > div > .actions > button {
+    flex-grow: 1;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: none;
+}
+.change-label-modal > div > .actions > button:nth-of-type(1){
+    color: white;
+}

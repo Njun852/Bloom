@@ -24,10 +24,17 @@
 }
 .kebab-menu {
     flex-direction: column;
-    margin-right: 12px;
+    align-items: center;
     margin-left: auto;
-    width: 10px;
+    width: 40px;
     gap: 6px;
+}
+.kebab-menu > div {
+    border-radius: 3px;
+    width: 7px;
+    aspect-ratio:  1;
+    flex-grow: 1;
+    background-color: black;
 }
 .kebab-menu > .options {
     top: 0;
@@ -55,13 +62,6 @@
 }
 .kebab-menu:hover > div {
     background-color: white;
-}
-.kebab-menu > div {
-    border-radius: 3px;
-    width: 7px;
-    aspect-ratio:  1;
-    flex-grow: 1;
-    background-color: black;
 }
 .label{
     text-align: center;

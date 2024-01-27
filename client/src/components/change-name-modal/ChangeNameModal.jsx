@@ -10,13 +10,13 @@ export default function ChangeNameModal(props){
         props.hideModal()   
     }
     return (
-        <div className='change-name-modal flex'>
+        <div className='change-name-modal modal flex'>
             <h2>Rename Task</h2>
             <div className='flex'>
                 <input type="text" placeholder='New Name' value={name} onChange={handleChange}/>
                 <div className='flex'>
-                    <button onClick={props.hideModal}>Cancel</button>
-                    <button onClick={rename}>Okay</button>
+                    <button onClick={props.hideModal} className='cancel-btn'>Cancel</button>
+                    <button onClick={rename} className='okay-btn'>Okay</button>
                 </div>
             </div>
         </div>
