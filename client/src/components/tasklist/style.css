@@ -10,6 +10,7 @@
 .task-list-container {
     margin-top: 12px;
     flex-grow: 1;
+    max-height: 300px;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;

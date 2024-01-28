@@ -21,7 +21,8 @@ export default function Taskpage(props) {
     return (
         <main className='taskpage flex'>
             <div className="left-part flex">
-                <TaskProgress moveToLabelPage={props.moveToLabelPage}/>
+                <TaskProgress moveToLabelPage={props.moveToLabelPage} tasks={props.tasks} 
+                labels={props.labels}/>
                 <div className='tips-card'>
                     <p>
                     Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
@@ -32,8 +33,8 @@ export default function Taskpage(props) {
             <div className='right-part flex'>
                 <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage}/>
                 <TaskList tasks={props.tasks} currentPage={taskLabelPage} 
-                setTasks={props.setTasks} setModal={props.setModal}>
-                    <CreateTask addTask={addTask} setTaskLabelPage={setTaskLabelPage}/>
+                setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}>
+                    <CreateTask addTask={addTask} setTaskLabelPage={setTaskLabelPage} labels={props.labels}/>
                 </TaskList>
             </div>            
         </main>

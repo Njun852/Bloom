@@ -6,20 +6,6 @@ import KebabMenu from '../kebab-menu/KebabMenu'
 import './style.css'
 
 export default function Task(props) {
-    // function toggle(e) {
-    //     e.stopPropagation()
-    //     const btn = document.querySelector('.kebab-menu.flex')
-    //     const isShown = e.currentTarget != window
-    //     btn.children[3].style.transform = isShown ? 'scaleY(1)' : 'scaleY(0)'
-    //     btn.dataset.visible = isShown == 'false'
-    // }
-    // React.useEffect(()=> {
-    //     if(!btn) return
-    //     window.addEventListener('click', toggle)
-    //     return () => {
-    //         window.removeEventListener('click', toggle)
-    //     }
-    // }, [])
     return (
         <div className={`task flex ${props.finished ? 'finished' : ''}`}>
             <div className='checkbox' onClick={()=>props.updateTask(props.task.id, 'finished', !props.task.finished)}>
@@ -38,10 +24,10 @@ export default function Task(props) {
             </div>
             <KebabMenu>
                 <button onClick={() => props.setModal(<ChangeNameModal hideModal={() =>props.setModal()} 
-                    rename={(newName) => props.updateTask(props.task.id, 'name', newName)}/>)}
+                    rename={(newName) => props.updateTask(props.task.id, 'name', newName)} title='Task'/>)}
                     >Rename Task</button>
-                    <button onClick={() => props.setModal(<ChangeLabelModal hideModal={() => props.setModal()} 
-                    change={(newLabel) => props.updateTask(props.task.id, 'label', newLabel)}/>)}>Change Label</button>
+                    <button onClick={() => props.setModal(<ChangeLabelModal labels={props.labels} 
+                    hideModal={() => props.setModal()} change={(newLabel) => props.updateTask(props.task.id, 'label', newLabel)}/>)}>Change Label</button>
                     <button onClick={() => props.setModal(<ConfirmDeleteModal 
                     delete={() => props.removeTask(props.task.id)} hideModal={() =>props.setModal()}/>)}
                     >Delete

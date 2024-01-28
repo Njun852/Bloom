@@ -11,7 +11,7 @@ export default function ChangeNameModal(props){
     }
     return (
         <div className='change-name-modal modal flex'>
-            <h2>Rename Task</h2>
+            <h2>Rename {props.title}</h2>
             <div className='flex'>
                 <input type="text" placeholder='New Name' value={name} onChange={handleChange}/>
                 <div className='flex'>

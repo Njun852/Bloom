@@ -22,7 +22,11 @@
     margin-top: auto;
     margin-left: auto;
 }
-.progress-card > img {
+.task-progress > .progress-card > .progress-list {
+    height: 150px;
+    overflow: auto;
+}
+.task-progress > .progress-card > img {
     position: absolute;
     top: -35%;
     z-index: -1;

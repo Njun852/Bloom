@@ -4,18 +4,13 @@ import Label from './Label'
 import './assets/style.css'
 
 export default function ChangeLabelModal(props){
-    const [labels, setLabels] = React.useState([
-        {name: 'Today', priority: 2, id: 'dsfsdfwef'},
-        {name: 'Important', priority: 1, id: 'vkdjfdsk'},
-        {name: 'School', priority: 3, id: 'dkfekfje'}
-    ])
+    const [selected, setSelected] = React.useState(props.labels[0])
 
-    const [selected, setSelected] = React.useState(labels[0])
-
-    const labelElements = labels.map(label => (
+    const labelElements = props.labels.map(label => (
         <Label selected={label.id==selected.id} 
         label={label} key={label.id} change={() => setSelected(label)}/>
     ))
+    
     return (
         <div className='change-label-modal modal flex'>
             <h1>Choose a Label</h1>

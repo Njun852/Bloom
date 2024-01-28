@@ -13,8 +13,8 @@ export default function Homepage(props){
             <h2 className='task-today'>Your task today</h2>
             <main className='flex'>
                 <div className='task-section flex'>
-                    <TaskList tasks={props.tasks} currentPage='today' finishTask={props.finishTask} 
-                    setModal={props.setModal}>        
+                    <TaskList tasks={props.tasks} currentPage='today' 
+                setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}>        
                         <CallToAction label='Create new task' navigate={props.navigate}/>
                     </TaskList>
                 </div>

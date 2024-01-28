@@ -18,7 +18,7 @@ export default function TaskList(props) {
     for(let task of filteredTasks){
         const taskElement = <Task task={task} key={task.id}
         setModal={props.setModal} updateTask={updateTask} 
-        finished={task.finished} removeTask={removeTask}/>
+        finished={task.finished} removeTask={removeTask} labels={props.labels}/>
         if(task.finished){
             completedTaskElements.push(taskElement)
             continue

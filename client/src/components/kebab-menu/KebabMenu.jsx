@@ -2,26 +2,21 @@ import React from 'react'
 import './style.css'
 
 export default function KebabMenu(props){
-    const [btn, setBtn] = React.useState() 
-    
     function toggle(e) {
         e.stopPropagation()
-        const button = btn || e.currentTarget
-        if(!btn){
-            setBtn(button)
-        }else{
-            setBtn()
+        for(let btn of document.querySelectorAll('.kebab-menu')){
+            btn.children[3].style.transform = 'scaleY(0)'
         }
-        button.children[3].style.transform = !btn ? 'scaleY(1)' : 'scaleY(0)'
+        if(e.currentTarget == window) return
+        e.currentTarget.children[3].style.transform = 'scaleY(1)'    
     }
 
     React.useEffect(()=> {
-        if(!btn) return
         window.addEventListener('click', toggle)
         return () => {
             window.removeEventListener('click', toggle)
         }
-    }, [btn])
+    }, [])
 
     return (
         <div className='kebab-menu flex' onClick={toggle}>

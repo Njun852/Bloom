@@ -9,9 +9,11 @@ import ChangeLabelModal from './components/change-label-modal/ChangeLabelModal'
 import LabelPage from './pages/labelpage/LabelPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('homepage')
+    const [currentPage, setCurrentPage] = React.useState('labelpage')
     const [tasks, setTasks] = React.useState([])
+    const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()
+
     function setPage(page) {
         setCurrentPage(page)
     }
@@ -19,17 +21,23 @@ export default function App(){
         fetch('http://localhost:5000/tasks')
         .then(respose => respose.json())
         .then(({data}) => setTasks([...data]))
+
+        fetch('http://localhost:5000/labels')
+        .then(respose => respose.json())
+        .then(({data}) => setLabels([...data]))
     }, [])
     let currentPageContent
     switch(currentPage) {
         case 'homepage':
         currentPageContent = <Homepage handleChange={setPage} 
         navigate={() => setCurrentPage('taskpage')} 
-        setModal={setModal} tasks={tasks} setTasks={setTasks}/>
+        setModal={setModal} tasks={tasks} setTasks={setTasks}
+        labels={labels}/>
         break
         case 'taskpage':
         currentPageContent = <Taskpage tasks={tasks} 
-        setModal={setModal} setTasks={setTasks} moveToLabelPage={()=>setCurrentPage('labelpage')}/>
+        setModal={setModal} setTasks={setTasks}
+        moveToLabelPage={()=>setCurrentPage('labelpage')} labels={labels}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>
@@ -41,7 +49,9 @@ export default function App(){
         currentPageContent = <TimerPage/> 
         break
         case 'labelpage':
-        currentPageContent = <LabelPage moveToTaskPage={() => setCurrentPage('taskpage')}/>
+        currentPageContent = <LabelPage 
+        moveToTaskPage={() => setCurrentPage('taskpage')} 
+        labels={labels} setLabels={setLabels} setModal={setModal} tasks={tasks}/>
         break
         default:
         currentPageContent = <h1>Coming Soon!</h1>

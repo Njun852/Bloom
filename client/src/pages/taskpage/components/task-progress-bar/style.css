@@ -14,9 +14,9 @@
     background-color: #202020;
 }
 .task-progress-bar > div > div {
-    content: '';
-    background-color: var(--primary);
     position: absolute;
+
+    transition: width 0.5s, color 0.5s;
     border-radius: 20px;
     height: 100%;
 }

@@ -4,6 +4,21 @@ import Label from './label/Label'
 import './style.css'
 
 export default function LabelPage(props){
+    function updateLabel(id, property, value){
+        props.setLabels(current => {
+            return current.map(label => {
+                return label.id === id ?
+                {...label, [property]: value} : label
+            })
+        })
+    }
+    const labelElements = props.labels.map(label => {
+        const tasks = props.tasks.filter(task => task.label.id == label.id)
+        const completedTasks = tasks.filter(task => task.finished)
+        return <Label name={label.name} tasks={tasks.length} 
+        completedTasks={completedTasks.length} priority={label.priority}
+        id={label.id} key={label.id} setModal={props.setModal} updateLabel={updateLabel}/>
+    })
     return (
         <div className='label-page flex'>
             <div className='flex'>
@@ -12,9 +27,7 @@ export default function LabelPage(props){
             </div>
             <div className='flex'>
                 <div className='labels flex'>
-                    <Label name='Today' tasks={15} completedTasks={5} priority={2}/>
-                    <Label name='Important' tasks={3} completedTasks={0} priority={1}/>
-                    <Label name='School' tasks={5} completedTasks={2} priority={3}/>
+                    {labelElements}
                 </div>
                 <div className='flex'>
                     <button onClick={props.moveToTaskPage}>Go Back</button>

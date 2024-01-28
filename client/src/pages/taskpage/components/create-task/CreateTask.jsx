@@ -4,25 +4,23 @@ import Arrow from './arrow.png'
 import { nanoid } from 'nanoid'
 
 export default function CreateTask(props) {
-    const [labels, setLabels] = React.useState([
-        {name: 'Today', priority: 2, id: 'aldfjeifsjk'}, 
-        {name: 'Important', priority: 1, id: 'fehfdnse'}, 
-        {name: 'School', priority: 3, id: 'kejfsekjfe'}
-    ])
+    const [labels, setLabels] = React.useState([...props.labels])
     const [task, setTask] = React.useState({name: '', label: labels[0], finished: false})
-    
     const labelElements = labels.map((label, index) => {
         return (
             <button 
-                className={index == 0 ? 'flex selected' : 'flex'}
-                onClick={index == 0 ? toggle : changeLabel}
-                key={index} data-id={label.id}
+            className={index == 0 ? 'flex selected' : 'flex'}
+            onClick={index == 0 ? toggle : changeLabel}
+            key={index} data-id={label.id}
             >
                 <p>{label.name}</p>
                 {index == 0 && <img src={Arrow} alt='arrow'/>}
             </button>
         )
     })
+        React.useEffect(() => {
+        setLabels([...props.labels])
+    }, [props.labels])
     function changeName(e){
         setTask(prev => ({...prev, name: e.target.value}))
     }
@@ -53,10 +51,11 @@ export default function CreateTask(props) {
             parent.style.height = '23px'
         }else{
             arrow.style.rotate = '180deg'
-            parent.style.height = `${3*23+(2*2)}px`
+            parent.style.height = `${labels.length*23+(2*(labels.length-1))}px`
         }
         parent.dataset.open = !isOpen
     }
+
     return (
         <div className='create-task flex'>
             <div className='wrapper flex'>
