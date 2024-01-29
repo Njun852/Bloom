@@ -16,7 +16,9 @@
     overflow-y: auto;
     padding: 4px;
 }
-
+.taskpage .task-list-container {
+    max-height: 500px;
+}
 .task-list-container > h1 {
     color: var(--dark-text);
     margin: auto;

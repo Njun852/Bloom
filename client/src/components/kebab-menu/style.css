@@ -30,6 +30,7 @@
 .kebab-menu > .options > button {
     height: 40px;
     border: none;
+    flex-grow: 1;
     background: white;
 }
 .kebab-menu > .options > button:hover {

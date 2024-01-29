@@ -89,6 +89,9 @@ button {
 .okay-btn {
     background: var(--primary);
 }
+.okay-btn-secondary {
+    background: var(--secondary);
+}
 ::-webkit-scrollbar {
     width: 4px;
 }

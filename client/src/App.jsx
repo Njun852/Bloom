@@ -6,6 +6,7 @@ import WellBeingPage from './pages/well-being-page/WellBeingPage'
 import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
 import ChangeLabelModal from './components/change-label-modal/ChangeLabelModal'
+import CreateLabelModal from './pages/labelpage/create-label-modal/CreateLabelModal'
 import LabelPage from './pages/labelpage/LabelPage'
 
 export default function App(){
@@ -66,6 +67,7 @@ export default function App(){
 
             {modal && <div className='modals'>
                 {modal}
+                {/* <CreateLabelModal/> */}
             </div>}
         </div>
     )

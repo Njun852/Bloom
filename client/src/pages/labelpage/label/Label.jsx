@@ -1,6 +1,7 @@
 import React from 'react'
 import KebabMenu from '../../../components/kebab-menu/KebabMenu'
-import ChangeNameModal from '../../../components/change-name-modal/ChangeNameModal'
+import CreateLabelModal from '../create-label-modal/CreateLabelModal'
+import ConfirmDeleteModal from '../../../components/confirm-delete-modal/ConfirmDeleteModal'
 import './style.css'
 
 export default function Label(props){
@@ -16,10 +17,9 @@ export default function Label(props){
                 <span>Completed: {props.completedTasks}</span>
             </div>
             <KebabMenu>
-                <button onClick={() => props.setModal(<ChangeNameModal 
-                hideModal={() => props.setModal()} title='Label' rename={(newName) => props.updateLabel(props.id, 'name', newName)}/>)}>Rename Label</button>
-                <button>Change Priority</button>
-                <button>Delete Label</button>
+                <button onClick={() => props.setModal(<CreateLabelModal title='Update' addLabel={props.addLabel} 
+                hideModal={() => props.setModal()} current={{name: props.name, priority: props.priority, id: props.id}}/>)}>Edit Label</button>
+                <button onClick={() => props.setModal(<ConfirmDeleteModal hideModal={() => props.setModal()} delete={() => props.delete(props.id)}/>)}>Delete Label</button>
             </KebabMenu>
         </div>
     )
