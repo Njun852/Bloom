@@ -10,7 +10,7 @@ import CreateLabelModal from './pages/labelpage/create-label-modal/CreateLabelMo
 import LabelPage from './pages/labelpage/LabelPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('labelpage')
+    const [currentPage, setCurrentPage] = React.useState('taskpage')
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()

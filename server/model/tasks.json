@@ -1,32 +1,22 @@
 [
   {
-    "name": "Do homework",
-    "label": {
-      "name": "Important",
-      "priority": 1,
-      "id": "BhFNjoACpM6RX5ISflekNo"
-    },
-    "finished": false,
-    "id": "-U58H3Y3Xoux14dZasGdS"
-  },
-  {
-    "name": "Task 1",
-    "label": {
-      "name": "Important",
-      "priority": 1,
-      "id": "BhFNjoACpM6RX5ISflekNo"
-    },
-    "finished": false,
-    "id": "cq6llft4hWT_gxtPlh5Kl"
-  },
-  {
     "name": "FInish task",
     "label": {
-      "name": "work",
+      "name": "Important",
       "priority": 1,
-      "id": "R5NQRcXBy2n7Bx0TVsQ-j"
+      "id": "BhFNjoACpM6RX5ISflekNo"
     },
     "finished": false,
-    "id": "B1LnJKAAXQ8QTfbUR1ttJ"
+    "id": "SMiHTLvzCLsHPu2ns1gCo"
+  },
+  {
+    "name": "Eat",
+    "label": {
+      "name": "Today",
+      "priority": 2,
+      "id": "BhFNjoACpM3RX5ISflekNo"
+    },
+    "finished": false,
+    "id": "vDOxeHgXl0X-y_0fWCK3j"
   }
 ]

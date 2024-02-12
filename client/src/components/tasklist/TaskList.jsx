@@ -3,6 +3,7 @@ import './style.css'
 import Task from '../task/Task'
 
 export default function TaskList(props) {
+    console.log('hi!!')
     const filteredTasks = props.tasks.filter(task => {
         return (props.currentPage == 'tasks' 
         || task.label.name.toLowerCase() == props.currentPage)

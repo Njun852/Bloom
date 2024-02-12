@@ -18,6 +18,7 @@ export default function Taskpage(props) {
             body: JSON.stringify([...props.tasks])
         })
     }, [props.tasks])
+    console.log('hi')
     return (
         <main className='taskpage flex'>
             <div className="left-part flex">
@@ -31,7 +32,7 @@ export default function Taskpage(props) {
                 </div>
             </div>
             <div className='right-part flex'>
-                <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage}/>
+                <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage} filter={props.setTasks}/>
                 <TaskList tasks={props.tasks} currentPage={taskLabelPage} 
                 setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}>
                     <CreateTask addTask={addTask} setTaskLabelPage={setTaskLabelPage} labels={props.labels}/>

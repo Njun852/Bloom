@@ -2,13 +2,22 @@ import React from 'react'
 import Arrow from './assets/arrow.png'
 import './assets/style.css'
 
-export default function DropDown(){
+export default function DropDown(props){
     const [sortElements, setSortElements] = React.useState(['Time', 'Importance'])
+    const filters = {
+        'Importance': () => props.filter(current => current.sort((a, b) => a.label.priority - b.label.priority))
+    }
     function changePosition(e){
         const target = e.currentTarget.textContent
         setSortElements(current => {
             const others = current.filter(element => element != target)
             return [target, ...others]
+        })
+        console.log(target)
+        if(target === 'Importance')
+        props.filter(current => {
+            return current.toSorted((a, b) => a.label.priority - b.label.priority)
+        
         })
         const parent = e.currentTarget.parentElement
         parent.dataset.expand = parent.dataset.expand == 'false'

@@ -15,7 +15,7 @@ export default function TaskOption(props) {
                 <button className={props.currentPage == 'important' ? 'selected' : ''} onClick={changePage}>Important</button>
                 <button className={props.currentPage == 'tasks' ? 'selected' : ''} onClick={changePage}>Tasks</button>
             </nav>
-            <DropDown/>
+            <DropDown filter={props.filter}/>
         </div>
     )
 }
