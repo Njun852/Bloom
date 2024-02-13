@@ -5,7 +5,12 @@ import './assets/style.css'
 export default function DropDown(props){
     const [sortElements, setSortElements] = React.useState(['Time', 'Importance'])
     const filters = {
-        'Importance': () => props.filter(current => current.sort((a, b) => a.label.priority - b.label.priority))
+        'Importance': () => props.filter(current => current.toSorted((a, b) => {
+            if(a.priority) 
+            return a.priority - b.priority
+            return a.label.priority - b.label.priority
+            })),
+        'Time': () => props.filter(current => current.toSorted((a, b) => a.dateCreated - b.dateCreated))
     }
     function changePosition(e){
         const target = e.currentTarget.textContent
@@ -13,12 +18,7 @@ export default function DropDown(props){
             const others = current.filter(element => element != target)
             return [target, ...others]
         })
-        console.log(target)
-        if(target === 'Importance')
-        props.filter(current => {
-            return current.toSorted((a, b) => a.label.priority - b.label.priority)
-        
-        })
+        filters[target]()
         const parent = e.currentTarget.parentElement
         parent.dataset.expand = parent.dataset.expand == 'false'
     }

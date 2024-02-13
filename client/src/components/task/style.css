@@ -57,7 +57,7 @@
 .finished .checkbox > svg {
     display: block;
 }
-.finished > .task-details h3, .finished > .task-details p{
+.finished .task-details h3, .finished .task-details p{
     text-decoration: line-through;
     opacity: 0.8;
 }

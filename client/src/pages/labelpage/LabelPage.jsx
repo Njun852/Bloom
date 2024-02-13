@@ -7,14 +7,20 @@ import './style.css'
 export default function LabelPage(props){
     function updateLabel(id, property, value){
         props.setLabels(current => {
-            return current.map(label => {
+            const updated =  current.map(label => {
                 return label.id === id ?
                 {...label, [property]: value} : label
             })
+            updateToServer(updated)
+            return updated
         })
     }
     function addLabel(label) {
-        props.setLabels(current => [...current, label])
+        props.setLabels(current => {
+            const added = [...current, label]
+            updateToServer(added)
+            return added
+    })
     }
     const labelElements = props.labels.map(label => {
         const tasks = props.tasks.filter(task => task.label.id == label.id)
@@ -25,18 +31,19 @@ export default function LabelPage(props){
         id={label.id} key={label.id} setModal={props.setModal} updateLabel={updateLabel}
         addLabel={(label)=>{ props.setLabels(current => current.map(l => l.id === label.id ? {...label} : {...l}))}}/>
     })
-    React.useEffect(() => {
+    function updateToServer(labels) {
         fetch('http://localhost:5000/labels', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify([...props.labels])
+            body: JSON.stringify([...labels])
         })
-    }, [props.labels])
+    }
+
     return (
         <div className='label-page flex'>
             <div className='flex'>
                 <h1>Labels</h1>
-                <DropDown/>
+                <DropDown filter={props.setLabels}/>
             </div>
             <div className='flex'>
                 <div className='labels flex'>

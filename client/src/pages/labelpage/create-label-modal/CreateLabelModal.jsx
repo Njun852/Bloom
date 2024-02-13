@@ -8,7 +8,7 @@ export default function CreateLabelModal(props){
         setLabel(current => ({...label, [e.target.name]: e.target.value}))
     }
     function addLabel(){
-        props.addLabel({...label, priority: Number(label.priority), id: label.id || nanoid()})
+        props.addLabel({...label, priority: Number(label.priority), dateCreated: Date.now(), id: label.id || nanoid()})
         props.hideModal()
     }
     return (

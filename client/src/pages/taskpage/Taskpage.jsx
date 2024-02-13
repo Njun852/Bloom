@@ -9,16 +9,13 @@ export default function Taskpage(props) {
     const [taskLabelPage, setTaskLabelPage] = React.useState('tasks')
 
     function addTask(task){
-        props.setTasks(current => [...current, task])
-    }
-    React.useEffect(()=> {
-        fetch('http://localhost:5000/tasks', {
-            method: "PUT",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify([...props.tasks])
+        props.setTasks(current => {
+            const added = [...current, task]
+            props.updateToServer(added)
+            return added
         })
-    }, [props.tasks])
-    console.log('hi')
+    }
+
     return (
         <main className='taskpage flex'>
             <div className="left-part flex">
@@ -33,8 +30,8 @@ export default function Taskpage(props) {
             </div>
             <div className='right-part flex'>
                 <TaskOption currentPage={taskLabelPage} setPage={setTaskLabelPage} filter={props.setTasks}/>
-                <TaskList tasks={props.tasks} currentPage={taskLabelPage} 
-                setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}>
+                <TaskList updateToServer={props.updateToServer} tasks={props.tasks} currentPage={taskLabelPage} 
+                    setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}>
                     <CreateTask addTask={addTask} setTaskLabelPage={setTaskLabelPage} labels={props.labels}/>
                 </TaskList>
             </div>            

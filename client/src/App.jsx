@@ -18,6 +18,13 @@ export default function App(){
     function setPage(page) {
         setCurrentPage(page)
     }
+    function updateToServer(tasks){
+        fetch('http://localhost:5000/tasks', {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify([...tasks])
+        })
+    }
     React.useEffect(()=>{
         fetch('http://localhost:5000/tasks')
         .then(respose => respose.json())
@@ -33,12 +40,13 @@ export default function App(){
         currentPageContent = <Homepage handleChange={setPage} 
         navigate={() => setCurrentPage('taskpage')} 
         setModal={setModal} tasks={tasks} setTasks={setTasks}
-        labels={labels}/>
+        labels={labels} updateToServer={updateToServer}/>
         break
         case 'taskpage':
         currentPageContent = <Taskpage tasks={tasks} 
         setModal={setModal} setTasks={setTasks}
-        moveToLabelPage={()=>setCurrentPage('labelpage')} labels={labels}/>
+        moveToLabelPage={()=>setCurrentPage('labelpage')}
+        labels={labels} updateToServer={updateToServer}/>
         break
         case 'wellbeingpage':
         currentPageContent = <WellBeingPage/>
@@ -67,7 +75,6 @@ export default function App(){
 
             {modal && <div className='modals'>
                 {modal}
-                {/* <CreateLabelModal/> */}
             </div>}
         </div>
     )

@@ -28,7 +28,7 @@ export default function CreateTask(props) {
         if(['today', 'important'].includes(labels[0].name.toLowerCase())){
             props.setTaskLabelPage(labels[0].name.toLowerCase())
         }
-        props.addTask({...task, label: labels[0], id: nanoid()})
+        props.addTask({...task, label: labels[0], dateCreated: Date.now(), id: nanoid()})
         setTask(prev => ({...prev, name: ''}))
     }
     function changeLabel(e) {

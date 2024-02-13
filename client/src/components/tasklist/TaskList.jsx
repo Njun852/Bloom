@@ -3,16 +3,23 @@ import './style.css'
 import Task from '../task/Task'
 
 export default function TaskList(props) {
-    console.log('hi!!')
     const filteredTasks = props.tasks.filter(task => {
         return (props.currentPage == 'tasks' 
         || task.label.name.toLowerCase() == props.currentPage)
     })
     function updateTask(id, property, value){
-        props.setTasks(current => current.map(current => current.id == id ? {...current, [property]: value} : current))
+        props.setTasks(current => {
+            const updated = current.map(current => current.id == id ? {...current, [property]: value} : current)
+            props.updateToServer(updated)
+            return updated
+        })
     }
     function removeTask(id){
-        props.setTasks(current => current.filter(task => task.id !=id))
+        props.setTasks(current => {
+            const removed = current.filter(task => task.id !=id)
+            props.updateToServer(removed)
+            return removed
+        })
     }
     const taskElements = []
     const completedTaskElements = []
@@ -20,9 +27,13 @@ export default function TaskList(props) {
         const taskElement = <Task task={task} key={task.id}
         setModal={props.setModal} updateTask={updateTask} 
         finished={task.finished} removeTask={removeTask} labels={props.labels}/>
+        const thing = (1000*60*60*24)
+        console.log()
         if(task.finished){
-            completedTaskElements.push(taskElement)
-            continue
+            if(!props.ignoreCompleted || ((Date.now() - task.dateCreated)/(1000*60*60*24) < 24)) {
+                completedTaskElements.push(taskElement)
+                continue
+            }
         }
         taskElements.push(taskElement)
     }
@@ -34,7 +45,9 @@ export default function TaskList(props) {
                 {(completedTaskElements && completedTaskElements.length > 0) && <div className='completed flex'>
                     <span>Completed</span>
                 </div>}
-                {completedTaskElements}
+                <div className='finished'>
+                    {completedTaskElements}
+                </div>
             </div>
             {props.children}
         </div>

@@ -7,14 +7,24 @@ import Dog from './assets/dog.png'
 
 export default function Homepage(props){
     
+    let greetings = 'Good '
+    const time = new Date().getHours()
+    if(time >= 18) {
+        greetings += 'Evening'
+    }else if(time >= 18) {
+        greetings += 'Afternoon'
+    }else {
+        greetings += 'Morning'
+    }
     return (
         <div className='homepage flex'>
-            <h1 className='greetings'>Goodmorning, User</h1>
+            <h1 className='greetings'>{greetings}, User</h1>
             <h2 className='task-today'>Your task today</h2>
             <main className='flex'>
                 <div className='task-section flex'>
-                    <TaskList tasks={props.tasks} currentPage='today' 
-                setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}>        
+                    <TaskList tasks={props.tasks} ignoreCompleted={true} currentPage='today' 
+                        setTasks={props.setTasks} setModal={props.setModal} labels={props.labels}
+                        updateToServer={props.updateToServer}>        
                         <CallToAction label='Create new task' navigate={props.navigate}/>
                     </TaskList>
                 </div>
