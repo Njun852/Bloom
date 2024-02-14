@@ -6,8 +6,9 @@ import './assets/style.css'
 export default function ChangeLabelModal(props){
     const [selected, setSelected] = React.useState(props.labels[0])
     const [searchQuery, setSearchQuery] = React.useState('')
-    const [filteredLabels, setFilteredLabels] = React.useState(searchQuery.length > 0 ? props.labels.filter(label => label.name.toLowerCase()
-    .includes(searchQuery.toLowerCase())) : props.labels)
+    const [labels, setLabels] = React.useState(props.labels)
+    const filteredLabels = searchQuery.length > 0 ? labels.filter(label => label.name.toLowerCase()
+    .includes(searchQuery.toLowerCase())) : labels
     const labelElements = filteredLabels.map(label => (
         <Label selected={label.id==selected.id} 
         label={label} key={label.id} change={() => setSelected(label)}/>
@@ -22,7 +23,7 @@ export default function ChangeLabelModal(props){
             <div className='flex'>
                 <div className='options flex'>
                     <input type="text" placeholder='Search for a label' onChange={handleChange} value={searchQuery}/>
-                    <DropDown filter={setFilteredLabels}/>
+                    <DropDown filter={setLabels}/>
                     {
                     searchQuery.length === 0 ? 
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
