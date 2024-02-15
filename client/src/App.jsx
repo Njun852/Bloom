@@ -18,11 +18,11 @@ export default function App(){
     function setPage(page) {
         setCurrentPage(page)
     }
-    function updateToServer(tasks){
+    function updateToServer(tasks, method='PUT', payload){
         fetch('http://localhost:5000/tasks', {
-            method: "PUT",
+            method: method,
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify([...tasks])
+            body: JSON.stringify(method === 'post' ? payload : [...tasks])
         })
     }
     React.useEffect(()=>{

@@ -11,7 +11,7 @@ export default function Taskpage(props) {
     function addTask(task){
         props.setTasks(current => {
             const added = [...current, task]
-            props.updateToServer(added)
+            props.updateToServer(added, 'post', task)
             return added
         })
     }
