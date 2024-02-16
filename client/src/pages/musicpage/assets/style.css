@@ -1,0 +1,86 @@
+.music-page {
+    flex-grow: 1;
+    margin: 0 !important;
+    width: 100vw;
+    border-top: 4px solid var(--dark-text);
+}
+.music-page > .sidebar {
+    flex-grow: 1;
+    border-right: 4px solid var(--dark-text);
+    background: linear-gradient(to bottom, var(--primary), black 400%);
+    flex-direction: column;
+}
+.music-page > .sidebar > p {
+    margin-left: 4px;
+    font-size: 1.4rem;
+}
+.music-page > .sidebar > .options {
+    height: 50px;
+    align-items: center;
+    border-top: 4px solid var(--dark-text);
+    justify-content: center;
+    margin-top: auto;
+    background: var(--primary-gradient);
+}
+.music-page > .sidebar > .options > svg {
+    height: 100%;
+    width: 50px;
+    scale: 0.8;
+    fill: var(--dark-text);
+}
+.music-page > .sidebar > .options :nth-child(2) {
+    transform: scaleX(-1);
+}
+.music-page > main {
+    width: 70%;
+    height: 100%;
+    position: relative;
+    flex-direction: column;
+    background-color: green;
+}
+.music-page > main > .cover {
+    overflow: hidden;
+    width: 100%;
+    height: 596.5px;
+    flex-grow: 1;
+    background-color: blue;
+    overflow: hidden;
+    position: absolute;
+    outline: 1px solid;
+}
+.music-page > main > .cover > img {
+    height: 100%;
+    width: 100%;
+    object-position: 0 20px;
+    object-fit: cover;
+    filter: blur(10px);
+}
+.music-page > main > .details {
+    margin: auto;
+    z-index: 2;
+    text-align: center;
+}
+.music-page > main > .details > * {
+    font-weight: 400;
+}
+.music-page > main > .cover > .filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0.4;
+    background: white;
+}
+.music-page > main > .slider {
+    height: 50px;
+    border-top: 4px solid var(--dark-text);
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: var(--dark-text);
+    background: linear-gradient(to bottom, #00CCFF, black 500%)
+}
+.music-page > main > .slider > input {
+    width: 70%;
+    accent-color: var(--dark-text);
+}

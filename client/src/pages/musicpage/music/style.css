@@ -1,0 +1,21 @@
+.music {
+    width: 100%;
+    align-items: center;
+    height: 70px;
+    gap: 12px;
+    padding: 5px 24px;
+}
+.music > p {
+    font-size: 1.1rem;
+}
+.current-music {
+    background: #415747;
+}
+.current-music > .album-cover {
+    background: #9EAFA2 !important;
+}
+.music > .album-cover {
+    height: 100%;
+    aspect-ratio: 1/1.2;
+    background-color: var(--dark-text);
+}

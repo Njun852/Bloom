@@ -5,12 +5,11 @@ import Taskpage from './pages/taskpage/Taskpage'
 import WellBeingPage from './pages/well-being-page/WellBeingPage'
 import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
-import ChangeLabelModal from './components/change-label-modal/ChangeLabelModal'
-import CreateLabelModal from './pages/labelpage/create-label-modal/CreateLabelModal'
+import MusicPage from './pages/musicpage/MusicPage'
 import LabelPage from './pages/labelpage/LabelPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('taskpage')
+    const [currentPage, setCurrentPage] = React.useState('musicpage')
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()
@@ -61,6 +60,9 @@ export default function App(){
         currentPageContent = <LabelPage 
         moveToTaskPage={() => setCurrentPage('taskpage')} 
         labels={labels} setLabels={setLabels} setModal={setModal} tasks={tasks}/>
+        break
+        case 'musicpage':
+        currentPageContent = <MusicPage/>
         break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
