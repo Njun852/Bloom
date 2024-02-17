@@ -24,9 +24,13 @@
 }
 .music-page > .sidebar > .options > svg {
     height: 100%;
+    cursor: pointer;
     width: 50px;
     scale: 0.8;
     fill: var(--dark-text);
+}
+.music-page > .sidebar > .options > svg:hover {
+    fill: white;
 }
 .music-page > .sidebar > .options :nth-child(2) {
     transform: scaleX(-1);

@@ -7,8 +7,8 @@ export default function Music(props) {
     _class += 'current-music'
     return (
         <div className={_class}>
-            <div className='album-cover'></div>
-            <p>Song Name</p>
+            <img className='album-cover' src={props.cover}></img>
+            <p>{props.name}</p>
         </div>
     )    
 }
