@@ -1,16 +1,15 @@
 import React from 'react'
 import Music from './music/Music'
 import './assets/style.css'
-import Song from './assets/The Deli - Breeze.mp3'
 import Cover from './assets/cover.webp'
 
 export default function MusicPage(props) {
-    const [isPlaying, setIsPlaying] = React.useState(false)
-    const [currentTime, setCurrentTime] = React.useState(0)
+    const animationFrame = React.useRef()
     function handleChange(e) {
-        setCurrentTime(e.target.value)
         const player = document.querySelector('audio')
+        const currentTime = document.querySelector('.current-time')        
         player.currentTime = e.target.value
+        currentTime.textContent = secondsToMinutes(e.target.value)
     }
     function secondsToMinutes(_seconds) {
         const seconds = Math.round(_seconds)
@@ -20,30 +19,44 @@ export default function MusicPage(props) {
         const fourtDigit = Math.floor((seconds/60)/10)
         return `${fourtDigit}${thirdDigit}:${secondDigit}${firstDigit}`
     }
-    function toggle() {
+    function play(shouldPlay) {
         const player = document.querySelector('audio')
-        isPlaying ? player.pause() : player.play()
-        setIsPlaying(current => !current)
-
-        const currentTime = document.querySelector('.current-time')        
         const slider = document.querySelector('.slider > input')
+        const currentTime = document.querySelector('.current-time')        
         function update() {
             currentTime.textContent = secondsToMinutes(player.currentTime)
             slider.value = player.currentTime
-            requestAnimationFrame(update)
+            animationFrame.current = requestAnimationFrame(update)
         }
+        if(!props.musicIsPlaying || shouldPlay)
         update()
     }
+    function toggle() {
+        const player = document.querySelector('audio')
+        props.musicIsPlaying ? player.pause() : player.play()
+        props.setMusicIsPlaying(current => !current)     
+        play()
+        if(props.musicIsPlaying){
+            cancelAnimationFrame(animationFrame.current)
+        }
+    }
     React.useEffect(() => {
-        setTimeout(() => {
-            const player = document.querySelector('audio')
-            const duration = document.querySelector('.duration')
-            const slider = document.querySelector('.slider > input')
-            slider.max = Math.round(player.duration)
-            slider.value = 0 
-            
-            duration.textContent = secondsToMinutes(player.duration)
-        }, 100)
+        const slider = document.querySelector('.slider > input')
+        if(!props.musicIsPlaying){
+            slider.value = 0
+            setTimeout(() => {
+                    const player = document.querySelector('audio')
+                    const duration = document.querySelector('.duration')
+                    slider.max = Math.round(player.duration)
+                    duration.textContent = secondsToMinutes(player.duration)
+                }, 100)
+        }else{
+            console.log('hi')
+            play(true)
+        }
+        return () => {
+            cancelAnimationFrame(animationFrame.current)
+        }
     }, [])
     return (
         <div className='music-page flex'>
@@ -63,7 +76,7 @@ export default function MusicPage(props) {
                 416V96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4l192 160L256 241V96c0-17.7 
                 14.3-32 32-32s32 14.3 32 32V416c0 17.7-14.3 32-32 32s-32-14.3-32-32V271l-11.5 9.6-192 160z"/></svg>
                 {
-                    isPlaying ? 
+                    props.musicIsPlaying ? 
                     <svg onClick={toggle} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 
                     0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/>
@@ -102,9 +115,6 @@ export default function MusicPage(props) {
                     <p className='duration'>00:00</p>
                 </div>
             </main>
-            <audio>
-                <source src={Song} type='audio/mp3' />
-            </audio>
         </div>
     )
 }

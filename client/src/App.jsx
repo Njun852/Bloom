@@ -7,13 +7,14 @@ import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
 import MusicPage from './pages/musicpage/MusicPage'
 import LabelPage from './pages/labelpage/LabelPage'
+import Song from './assets/The Deli - Breeze.mp3'
 
 export default function App(){
     const [currentPage, setCurrentPage] = React.useState('musicpage')
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()
-
+    const [musicIsPlaying, setMusicIsPlaying] = React.useState(false)
     function setPage(page) {
         setCurrentPage(page)
     }
@@ -48,7 +49,7 @@ export default function App(){
         labels={labels} updateToServer={updateToServer}/>
         break
         case 'wellbeingpage':
-        currentPageContent = <WellBeingPage/>
+        currentPageContent = <WellBeingPage setCurrentPage={setCurrentPage}/>
         break
         case 'settingspage':
         currentPageContent = <SettingsPage/>
@@ -62,7 +63,7 @@ export default function App(){
         labels={labels} setLabels={setLabels} setModal={setModal} tasks={tasks}/>
         break
         case 'musicpage':
-        currentPageContent = <MusicPage/>
+        currentPageContent = <MusicPage musicIsPlaying={musicIsPlaying} setMusicIsPlaying={setMusicIsPlaying}/>
         break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
@@ -74,10 +75,12 @@ export default function App(){
             <div className='page flex'>
                 {currentPageContent}
             </div>
-
             {modal && <div className='modals'>
                 {modal}
             </div>}
+            <audio>
+                <source src={Song} type='audio/mp3' />
+            </audio>
         </div>
     )
 }

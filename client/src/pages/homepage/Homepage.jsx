@@ -11,7 +11,7 @@ export default function Homepage(props){
     const time = new Date().getHours()
     if(time >= 18) {
         greetings += 'Evening'
-    }else if(time >= 18) {
+    }else if(time >= 12) {
         greetings += 'Afternoon'
     }else {
         greetings += 'Morning'

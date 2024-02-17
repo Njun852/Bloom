@@ -4,7 +4,7 @@ import MoodHistory from './components/mood-history/MoodHistory'
 import GuyLayin from './assets/guy-laying.png'
 import GuyMaditating from './assets/guy-meditating.png'
 import './assets/style.css'
-export default function WellBeingPage() {
+export default function WellBeingPage(props) {
 
     return (
         <main className='well-being-page flex'>
@@ -12,7 +12,7 @@ export default function WellBeingPage() {
             <div className='bottom-part flex'>
                 <MoodHistory/>
                 <div className='activities flex'>
-                    <div className='listen-music flex'>
+                    <div className='listen-music flex' onClick={() => props.setCurrentPage('musicpage')}>
                         <img src={GuyLayin} alt='guy laying on sofa' />
                         <h2>Listen to calming music</h2>
                     </div>

@@ -19,6 +19,15 @@
     flex-direction: column;
     gap: 24px;
 }
+.activities > div {
+    cursor: pointer;
+}
+.activities > div:hover {
+    background: var(--dark-text);
+}
+.activities > div:hover > h2 {
+    color: white;
+}
 .activities > .listen-music > h2 {
     font-weight: 600;
     width: 50%;
