@@ -1,6 +1,5 @@
 import React from 'react'
 import Music from './music/Music'
-import Cover from './assets/cover.webp'
 import './assets/style.css'
 import data from './assets/musicData.json'
 
@@ -9,13 +8,18 @@ export default function MusicPage(props) {
     const [musicData, setMusicData] = React.useState(data)
     const musicElements = musicData.map(
         (song, index) => (
-            <Music key={index} isCurrent={index === 0} name={song.name} cover={song.img}/>
+            <Music  changeToMusic={changeToMusic} index={index} 
+            key={index} isCurrent={index === 0} name={song.name} cover={song.img}/>
         ) 
     )
     function next() {
         setMusicData(current => ([...current.filter((m, i) => i != 0), current[0]]))
-        props.setMusic(current => ({...current, src: musicData[1].file}))
         change(1)
+    }
+    function changeToMusic(index) {
+        setMusicData(current => (index === 0 ? current : [current[index], 
+            ...current.filter((m, i) => i != 0 && i != index), current[0]]))
+        change(index)
     }
     function change(index) {
         const player = document.querySelector('audio')
@@ -23,7 +27,6 @@ export default function MusicPage(props) {
     }
     function prev() {
         setMusicData(current => ([current[musicData.length-1], ...current.filter((m, i) => i != musicData.length-1)]))
-        props.setMusic(current => ({...current, src: musicData[musicData.length-1].file}))
         change(musicData.length-1)
     }
     function handleChange(e) {
@@ -63,6 +66,10 @@ export default function MusicPage(props) {
             cancelAnimationFrame(animationFrame.current)
         }
     }
+    function toggleShuffle() {
+        props.setMusic(current => ({...current, shouldShuffle: !current.shouldShuffle}))
+    }
+    
     React.useEffect(() => {
         const slider = document.querySelector('.slider > input')
         const player = document.querySelector('audio')
@@ -72,14 +79,18 @@ export default function MusicPage(props) {
         }else{
             play(true)
         }
-        if(!props.music.src){
-            props.setMusic(current => ({...current, src: musicData[0].file}))
-            player.src = musicData[0].file
+        function nextMusic() {
+            let index = props.music.shouldShuffle ? (Math.floor(Math.random() * musicData.length)) : 1
+            if(index === 0 && props.music.shouldShuffle) index += 1
+            change(index)
+            setMusicData(current => ([current[index], ...current.filter((m, i) => i != index && i != 0), current[0]]))
         }
+        player.addEventListener('ended', nextMusic)
         return () => {
+            player.removeEventListener('ended', nextMusic)
             cancelAnimationFrame(animationFrame.current)
         }
-    }, [musicData])
+    }, [musicData, props.music])
     function toggleLoop() {
         const player = document.querySelector('audio')
         if (props.music.shouldLoop) {
@@ -122,7 +133,7 @@ export default function MusicPage(props) {
                 <svg xmlns="http://www.w3.org/2000/svg" onClick={next} viewBox="0 0 320 512"><path d="M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 
                 416V96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4l192 160L256 241V96c0-17.7 
                 14.3-32 32-32s32 14.3 32 32V416c0 17.7-14.3 32-32 32s-32-14.3-32-32V271l-11.5 9.6-192 160z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 
+                <svg onClick={toggleShuffle} style={{fill: props.music.shouldShuffle ? 'white' : 'var(--dark-text)'}} xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512"><path d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 
                 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 
                 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V160H352c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 
                 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96h32V64c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 
@@ -148,7 +159,7 @@ export default function MusicPage(props) {
                             const player = document.querySelector('audio')
                             player.muted = false
                         }}/>
-                    <p className='duration'>00:00</p>
+                    <p className='duration'>{secondsToMinutes(props.music.duration)}</p>
                 </div>
             </main>
         </div>

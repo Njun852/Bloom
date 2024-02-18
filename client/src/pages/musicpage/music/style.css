@@ -3,7 +3,11 @@
     align-items: center;
     height: 70px;
     gap: 12px;
+    cursor: pointer;
     padding: 5px 24px;
+}
+.music:hover {
+    background: #415747;
 }
 .music > p {
     font-size: 1.1rem;

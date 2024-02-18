@@ -6,7 +6,7 @@ export default function Music(props) {
     if(props.isCurrent) 
     _class += 'current-music'
     return (
-        <div className={_class}>
+        <div className={_class} onClick={() => props.changeToMusic(props.index)}>
             <img className='album-cover' src={props.cover}></img>
             <p>{props.name}</p>
         </div>

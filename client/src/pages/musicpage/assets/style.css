@@ -95,6 +95,7 @@
     background: linear-gradient(to bottom, #00CCFF, black 500%)
 }
 .music-page > main > .slider > input {
+    cursor: pointer;
     width: 70%;
     accent-color: var(--dark-text);
 }

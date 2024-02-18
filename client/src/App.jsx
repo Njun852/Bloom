@@ -14,7 +14,7 @@ export default function App(){
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()
-    const [music, setMusic] = React.useState({shouldLoop: false, isPlaying: false, src:''})
+    const [music, setMusic] = React.useState({shouldLoop: false, isPlaying: false, duration: 0, shouldShuffle: false})
     function setPage(page) {
         setCurrentPage(page)
     }
@@ -90,13 +90,12 @@ export default function App(){
             <audio onCanPlay={() => {
                 const slider = document.querySelector('.slider > input')
                 const player = document.querySelector('audio')
-                const duration = document.querySelector('.duration')
                 slider.max = Math.round(player.duration)
                 if(music.isPlaying)
                 player.play()
-                duration.textContent = secondsToMinutes(player.duration)                
-            }}>
-                <source src={music.src} type='audio/mp3' />
+                setMusic(current => ({...current, duration: player.duration}))                
+            }} onEnded={() => console.log('done')}>
+                <source type='audio/mp3' />
             </audio>
         </div>
     )
