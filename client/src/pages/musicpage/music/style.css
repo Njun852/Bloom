@@ -15,6 +15,7 @@
     background: #9EAFA2 !important;
 }
 .music > .album-cover {
+    object-fit: cover;
     height: 100%;
     aspect-ratio: 1/1.2;
     background-color: var(--dark-text);

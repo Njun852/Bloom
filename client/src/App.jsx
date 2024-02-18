@@ -14,7 +14,7 @@ export default function App(){
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()
-    const [musicIsPlaying, setMusicIsPlaying] = React.useState(false)
+    const [music, setMusic] = React.useState({shouldLoop: false, isPlaying: false, src:''})
     function setPage(page) {
         setCurrentPage(page)
     }
@@ -34,6 +34,15 @@ export default function App(){
         .then(respose => respose.json())
         .then(({data}) => setLabels([...data]))
     }, [])
+    function secondsToMinutes(_seconds) {
+        const seconds = Math.round(_seconds)
+        const firstDigit = seconds%10
+        const secondDigit = Math.floor(seconds/10)%6
+        const thirdDigit = Math.floor(seconds/60)%10
+        const fourtDigit = Math.floor((seconds/60)/10)
+        return `${fourtDigit}${thirdDigit}:${secondDigit}${firstDigit}`
+    }
+
     let currentPageContent
     switch(currentPage) {
         case 'homepage':
@@ -63,7 +72,7 @@ export default function App(){
         labels={labels} setLabels={setLabels} setModal={setModal} tasks={tasks}/>
         break
         case 'musicpage':
-        currentPageContent = <MusicPage musicIsPlaying={musicIsPlaying} setMusicIsPlaying={setMusicIsPlaying}/>
+        currentPageContent = <MusicPage setMusic={setMusic} music={music}/>
         break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
@@ -78,8 +87,16 @@ export default function App(){
             {modal && <div className='modals'>
                 {modal}
             </div>}
-            <audio>
-                <source src={Song} type='audio/mp3' />
+            <audio onCanPlay={() => {
+                const slider = document.querySelector('.slider > input')
+                const player = document.querySelector('audio')
+                const duration = document.querySelector('.duration')
+                slider.max = Math.round(player.duration)
+                if(music.isPlaying)
+                player.play()
+                duration.textContent = secondsToMinutes(player.duration)                
+            }}>
+                <source src={music.src} type='audio/mp3' />
             </audio>
         </div>
     )

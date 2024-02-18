@@ -14,6 +14,10 @@
     margin-left: 4px;
     font-size: 1.4rem;
 }
+.music-page > .sidebar > .music-list {
+    overflow: auto;
+    height: 568px;
+}
 .music-page > .sidebar > .options {
     height: 50px;
     align-items: center;
@@ -47,7 +51,7 @@
     width: 100%;
     height: 596.5px;
     flex-grow: 1;
-    background-color: blue;
+    background-color: white;
     overflow: hidden;
     position: absolute;
     outline: 1px solid;
@@ -64,6 +68,12 @@
     z-index: 2;
     text-align: center;
 }
+.music-page > main > .details > img {
+    margin-bottom: 12px;
+    height: 150px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
 .music-page > main > .details > * {
     font-weight: 400;
 }
@@ -72,7 +82,7 @@
     width: 100%;
     height: 100%;
     z-index: 2;
-    opacity: 0.4;
+    opacity: 0.5;
     background: white;
 }
 .music-page > main > .slider {
