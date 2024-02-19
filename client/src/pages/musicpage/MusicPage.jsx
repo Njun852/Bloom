@@ -69,7 +69,7 @@ export default function MusicPage(props) {
     function toggleShuffle() {
         props.setMusic(current => ({...current, shouldShuffle: !current.shouldShuffle}))
     }
-    
+
     React.useEffect(() => {
         const slider = document.querySelector('.slider > input')
         const player = document.querySelector('audio')

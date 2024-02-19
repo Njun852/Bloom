@@ -88,9 +88,7 @@ export default function App(){
                 {modal}
             </div>}
             <audio onCanPlay={() => {
-                const slider = document.querySelector('.slider > input')
                 const player = document.querySelector('audio')
-                slider.max = Math.round(player.duration)
                 if(music.isPlaying)
                 player.play()
                 setMusic(current => ({...current, duration: player.duration}))                
