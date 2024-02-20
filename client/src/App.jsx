@@ -7,10 +7,10 @@ import SettingsPage from './pages/settingspage/SettingsPage'
 import TimerPage from './pages/timerpage/TimerPage'
 import MusicPage from './pages/musicpage/MusicPage'
 import LabelPage from './pages/labelpage/LabelPage'
-import Song from './assets/The Deli - Breeze.mp3'
+import MediationPage from './pages/meditationpage/MeditationPage'
 
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('musicpage')
+    const [currentPage, setCurrentPage] = React.useState('mediationpage')
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()
@@ -73,6 +73,9 @@ export default function App(){
         break
         case 'musicpage':
         currentPageContent = <MusicPage setMusic={setMusic} music={music}/>
+        break
+        case 'mediationpage':
+        currentPageContent = <MediationPage/>
         break
         default:
         currentPageContent = <h1>Coming Soon!</h1>
