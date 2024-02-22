@@ -90,7 +90,7 @@ export default function MusicPage(props) {
             player.removeEventListener('ended', nextMusic)
             cancelAnimationFrame(animationFrame.current)
         }
-    }, [musicData, props.music])
+    }, [])
     function toggleLoop() {
         const player = document.querySelector('audio')
         if (props.music.shouldLoop) {

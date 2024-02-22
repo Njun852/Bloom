@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './components/header/Header'
+import Header from './components/header/Header' 
 import Homepage from './pages/homepage/Homepage'
 import Taskpage from './pages/taskpage/Taskpage'
 import WellBeingPage from './pages/well-being-page/WellBeingPage'
@@ -9,8 +9,9 @@ import MusicPage from './pages/musicpage/MusicPage'
 import LabelPage from './pages/labelpage/LabelPage'
 import MediationPage from './pages/meditationpage/MeditationPage'
 
+
 export default function App(){
-    const [currentPage, setCurrentPage] = React.useState('mediationpage')
+    const [currentPage, setCurrentPage] = React.useState('taskpage')
     const [tasks, setTasks] = React.useState([])
     const [labels, setLabels] = React.useState([])
     const [modal, setModal] = React.useState()

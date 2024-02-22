@@ -5,7 +5,8 @@ import Task from '../task/Task'
 export default function TaskList(props) {
     const filteredTasks = props.tasks.filter(task => {
         return (props.currentPage == 'tasks' 
-        || task.label.name.toLowerCase() == props.currentPage)
+        || task.label.name.toLowerCase() == 'today'
+        || (task.label.priority === 1 && props.currentPage === 'important'))
     })
     function updateTask(id, property, value){
         props.setTasks(current => {

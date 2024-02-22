@@ -15,18 +15,23 @@ export default function LabelPage(props){
             return updated
         })
     }
+    function deleteLabel(id) {
+        props.setLabels(current => {
+            const updated = current.filter(task => task.id != id)
+            updateToServer(updated)
+            return updated
+        })}
     function addLabel(label) {
         props.setLabels(current => {
             const added = [...current, label]
             updateToServer(added)
             return added
-    })
-    }
+    })}
     const labelElements = props.labels.map(label => {
         const tasks = props.tasks.filter(task => task.label.id == label.id)
         const completedTasks = tasks.filter(task => task.finished)
         return <Label name={label.name} tasks={tasks.length} 
-        delete={(id)=> props.setLabels(current => current.filter(label => label.id !== id))}
+        delete={() => deleteLabel(label.id)}
         completedTasks={completedTasks.length} priority={label.priority}
         id={label.id} key={label.id} setModal={props.setModal} updateLabel={updateLabel}
         addLabel={(label)=>{ props.setLabels(current => current.map(l => l.id === label.id ? {...label} : {...l}))}}/>
