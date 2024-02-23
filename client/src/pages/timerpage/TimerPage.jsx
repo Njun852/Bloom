@@ -6,7 +6,7 @@ import Navigation from './components/navigation/Navigation'
 import './assets/style.css'
 
 export default function TimerPage() {
-    const [focusDuration, breakDuration] = [3*1000, 2*1000]
+    const [focusDuration, breakDuration] = [25*60*1000, 15*60*1000]
     const [state, setState] = React.useState({time:focusDuration, playState:'stop', session:'focus'})
     const defaultTime = state.session === 'focus' ? focusDuration : breakDuration
     const [navigation, setNavigation] = React.useState('timer')
