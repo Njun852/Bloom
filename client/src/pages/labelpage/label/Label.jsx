@@ -16,11 +16,14 @@ export default function Label(props){
                 <span>Tasks: {props.tasks}</span>
                 <span>Completed: {props.completedTasks}</span>
             </div>
-            <KebabMenu>
-                <button onClick={() => props.setModal(<CreateLabelModal title='Update' addLabel={props.addLabel} 
-                hideModal={() => props.setModal()} current={{name: props.name, priority: props.priority, id: props.id}}/>)}>Edit Label</button>
-                <button onClick={() => props.setModal(<ConfirmDeleteModal hideModal={() => props.setModal()} delete={() => props.delete(props.id)}/>)}>Delete Label</button>
-            </KebabMenu>
+            {
+                !(props.name == 'Today' || props.name == 'Important') &&
+                <KebabMenu>
+                    <button onClick={() => props.setModal(<CreateLabelModal title='Update' addLabel={props.addLabel} 
+                    hideModal={() => props.setModal()} current={{name: props.name, priority: props.priority, id: props.id}}/>)}>Edit Label</button>
+                    <button onClick={() => props.setModal(<ConfirmDeleteModal hideModal={() => props.setModal()} delete={() => props.delete(props.id)}/>)}>Delete Label</button>
+                </KebabMenu>
+            }
         </div>
     )
 }
