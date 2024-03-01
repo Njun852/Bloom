@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express()
 
 app.use(cors())
-app.use(express.json(2))
+app.use(express.json())
 app.use('/tasks', taskRouter)
 app.use('/labels', labelRouter)
 app.listen(5000, () => console.log('server listening on port 5000...'))
